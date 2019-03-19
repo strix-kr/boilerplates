@@ -20,6 +20,11 @@ yarn run build
 yarn run test
 ```
 
+### Run apollo local server
+```
+yarn run apollo:run
+```
+
 ### Lints and fixes files
 ```
 yarn run lint
