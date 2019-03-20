@@ -1,6 +1,6 @@
 {
-  "name": "strix-front-boilerplate",
-  "short_name": "strix-front-boilerplate",
+  "name": "trade-sc-webapp",
+  "short_name": "trade-sc-webapp",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",

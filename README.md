@@ -1,4 +1,4 @@
-# strix-front-boilerplate
+# trade-sc-webapp
 
 ## Project setup
 ```
