@@ -1,0 +1,16 @@
+query($hasRoles: [String!], $orderBy: String) {
+  users(hasRoles: $hasRoles, orderBy: $orderBy) {
+    offset
+    limit
+    total
+    entries {
+      id
+      username
+      hasEmailVerified
+      roles
+      effectiveRoles
+      attributes
+      createdAt
+    }
+  }
+}

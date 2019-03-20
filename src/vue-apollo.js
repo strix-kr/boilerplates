@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueApollo from 'vue-apollo'
 import { createApolloClient, restartWebsockets } from 'vue-cli-plugin-apollo/graphql-client'
+import { appSetting } from '@/configs'
 
 // Install the vue plugin
 Vue.use(VueApollo)
@@ -9,12 +10,11 @@ Vue.use(VueApollo)
 const AUTH_TOKEN = 'apollo-token'
 
 // Http endpoint
-const httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || 'http://localhost:4000/graphql'
+const httpEndpoint = appSetting.VUE_APP_GRAPHQL_HTTP
 // Files URL root
-export const filesRoot = process.env.VUE_APP_FILES_ROOT || httpEndpoint.substr(0, httpEndpoint.indexOf('/graphql'))
+export const filesRoot = appSetting.VUE_APP_GRAPHQL_HTTP
 
 Vue.prototype.$filesRoot = filesRoot
-
 
 // Config
 const defaultOptions = {
@@ -22,7 +22,7 @@ const defaultOptions = {
   httpEndpoint,
   // You can use `wss` for secure connection (recommended in production)
   // Use `null` to disable subscriptions
-  wsEndpoint: process.env.VUE_APP_GRAPHQL_WS || 'ws://localhost:4000/graphql',
+  wsEndpoint: appSetting.VUE_APP_GRAPHQL_WS,
   // LocalStorage token
   tokenName: AUTH_TOKEN,
   // Enable Automatic Query persisting with Apollo Engine
@@ -31,7 +31,7 @@ const defaultOptions = {
   // You need to pass a `wsEndpoint` for this to work
   websocketsOnly: false,
   // Is being rendered on the server?
-  ssr: false,
+  ssr: false
 
   // Override default apollo link
   // note: don't override httpLink here, specify httpLink options in the
@@ -66,11 +66,11 @@ export function createProvider (options = {}) {
     defaultOptions: {
         $watchQuery: {
             fetchPolicy: 'cache-and-network',
-            errorPolicy: 'ignore',
+            errorPolicy: 'ignore'
         },
         $query: {
             fetchPolicy: 'network-only',
-            errorPolicy: 'all',
+            errorPolicy: 'all'
         },
         $mutate: {
             errorPolicy: 'all'

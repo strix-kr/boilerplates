@@ -13,6 +13,7 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'no-debugger': 'off',
+    'indent' : 'off',
     'graphql/template-strings': [
       'error',
       {

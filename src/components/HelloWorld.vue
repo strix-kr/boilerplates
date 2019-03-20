@@ -15,17 +15,14 @@
             </li>
         </ul>
         <h3>Steps</h3>
-        <ul class="steps">
+        <ul class="steps" :style="{textAlign:'left'}">
             <li>step1. git clone https://github.com/strix-kr/front-boilerplate.git</li>
             <li>step2. yarn install</li>
-            <li>step3. yarn run apollo:run</li>
-            <li>step4. yarn serve</li>
-            <li>step5. localserver graphql test <router-link to="/about">here</router-link> </li>
-        </ul>
-        <h3>Addition</h3>
-        <ul class="steps">
-            <li>you have to add graphql endpoint and graphql schema at ./src/graphql</li>
-            <li>you have to set application options at ./src/configs/settings.js</li>
+            <li>step3. set application configs ./src/configs/setting.js</li>
+            <li>step4. set ant-style-variables ./src/styles/ant-variable.js</li>
+            <li>step5. graphql example <router-link to="/about">Here</router-link></li>
+            <li>step6. you have to write k8s.yaml, Jenkinsfile</li>
+            <li>step6. you have to remove unused components ./src/registerAntFramework after complete project </li>
         </ul>
 
         <h3>ant-design-vue && firebase login Example</h3>
@@ -93,50 +90,47 @@ import 'firebase/auth'
 
 import { Modal } from 'ant-design-vue'
 
-
 export default {
-    data() {
+    data () {
         return {
-            form: this.$form.createForm(this),
+            form: this.$form.createForm(this)
         }
     },
     props: {
         msg: String
     },
     methods: {
-        onLogin(){
+        onLogin () {
             this.form.validateFields((err, values) => {
                 if (!err) {
-                    const { email, password } = values;
+                    const { email, password } = values
                     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
                     .then(() => {
                         return firebase.auth().signInWithEmailAndPassword(email, password)
                             .then((data) => {
-                                if(data.user){
+                                if (data.user) {
                                     return Modal.success({
-                                        title : '로그인되었습니다',
-                                        content : `${data.user.email}님 환영합니다`,
-                                        onOk : this.onOk
+                                        title: '로그인되었습니다',
+                                        content: `${data.user.email}님 환영합니다`,
+                                        onOk: this.onOk
                                     })
                                 }
-
                             })
                             .catch((error) => {
                                 return Modal.error({
-                                    title : error.code,
-                                    content : error.message
+                                    title: error.code,
+                                    content: error.message
                                 })
                             })
                     })
-                    .catch(function(error) {
+                    .catch((error) => {
                         // Handle Errors here.
-                        var errorCode = error.code
-                        var errorMessage = error.message
-                    });
+                        console.log('error', error)
+                    })
                 }
-            });
+            })
         },
-        onOk() {
+        onOk () {
             this.$router.replace('/about')
         }
     }
@@ -166,6 +160,8 @@ a {
 }
 
 .steps{
+    max-width:500px;
+    margin:0 auto;
     li{
         font-size:1.2em;
         display:block;

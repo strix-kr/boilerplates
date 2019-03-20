@@ -1,174 +1,60 @@
 <template>
-  <div class="apollo-example">
-    <!-- Cute tiny form -->
-    <div class="form">
-      <label for="field-name" class="label">Name</label>
-      <input
-        v-model="name"
-        placeholder="Type a name"
-        class="input"
-        id="field-name"
-      >
+    <div class="apollo-example">
+
+        <!-- Apollo watched Graphql query -->
+        <ApolloQuery
+            :query="require('../graphql/UserList.gql')"
+            :variables="{
+                'hasRoles': ['offline_access'],
+                'orderBy': 'identity.id'
+            }"
+        >
+            <template slot-scope="{ result: { loading, error, data } }">
+                <!-- loading  -->
+                <div v-if="loading" class="loading apollo">Loading...</div>
+
+                <!-- error  -->
+                <div v-else-if="error" class="error apollo">An error occured</div>
+
+                <!-- success  -->
+                <div v-else-if="data" class="result apollo">
+                    <p>total : {{ data.users.total }}</p>
+                    <ul>
+                        <li
+                            v-for="(user, inx) in data.users.entries"
+                            :key="inx"
+                        >
+                            <p
+                                v-for="(key, idx) in Object.keys(user)"
+                                :key="idx"
+                            >
+                                <span>{{ key }} : </span>
+                                <span>{{ user[key] }}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div v-else class="no-result apollo">No result :(</div>
+            </template>
+        </ApolloQuery>
     </div>
-
-    <!-- Apollo watched Graphql query -->
-    <!-- <ApolloQuery
-      :query="require('../graphql/UserList.gql')"
-      :variables="{
-          'hasRoles': ['offline_access'],
-          'orderBy': 'identity.id'
-      }"
-    >
-      <template slot-scope="{ result: { loading, error, data } }">
-        <div v-if="loading" class="loading apollo">Loading...</div>
-        <div v-else-if="error" class="error apollo">An error occured</div>
-        <div v-else-if="data" class="result apollo">
-            <p>total : {{ data.users.total }}</p>
-            <ul>
-                <li
-                    v-for="user in data.users.entries"
-                >
-                    <p
-                        v-for="(key, idx) in Object.keys(user)"
-                        :key="idx"
-                    >
-                        <span>{{ key }} : </span>
-                        <span>{{ user[key] }}</span>
-                    </p>
-                </li>
-            </ul>
-        </div>
-        <div v-else class="no-result apollo">No result :(</div>
-      </template>
-    </ApolloQuery> -->
-
-    <!-- Tchat example -->
-    <ApolloQuery
-      :query="require('../graphql/Messages.gql')"
-    >
-      <ApolloSubscribeToMore
-        :document="require('../graphql/MessageAdded.gql')"
-        :update-query="onMessageAdded"
-      />
-
-      <div slot-scope="{ result: { data } }">
-        <template v-if="data">
-          <div
-            v-for="message of data.messages"
-            :key="message.id"
-            class="message"
-          >
-            {{ message.text }}
-          </div>
-        </template>
-      </div>
-    </ApolloQuery>
-
-    <ApolloMutation
-      :mutation="require('../graphql/AddMessage.gql')"
-      :variables="{
-        input: {
-          text: newMessage,
-        },
-      }"
-      class="form"
-      @done="newMessage = ''"
-    >
-      <template slot-scope="{ mutate }">
-        <form v-on:submit.prevent="formValid && mutate()">
-          <label for="field-message">Message</label>
-          <input
-            id="field-message"
-            v-model="newMessage"
-            placeholder="Type a message"
-            class="input"
-          >
-        </form>
-      </template>
-    </ApolloMutation>
-
-    <div class="images">
-      <div
-        v-for="file of files"
-        :key="file.id"
-        class="image-item"
-      >
-        <img :src="`${$filesRoot}/${file.path}`" class="image"/>
-      </div>
-    </div>
-
-    <div class="image-input">
-      <label for="field-image">Image</label>
-      <input
-        id="field-image"
-        type="file"
-        accept="image/*"
-        required
-        @change="onUploadImage"
-      >
-    </div>
-  </div>
 </template>
 
 <script>
-import FILES from '../graphql/Files.gql'
-import UPLOAD_FILE from '../graphql/UploadFile.gql'
-
 export default {
-  data () {
-    return {
-      name: 'Anne',
-      newMessage: ''
-    }
-  },
 
-  apollo: {
-    files: FILES
-  },
-
-  computed: {
-    formValid () {
-      return this.newMessage
-    }
-  },
-
-  methods: {
-    onMessageAdded (previousResult, { subscriptionData }) {
-      return {
-        messages: [
-          ...previousResult.messages,
-          subscriptionData.data.messageAdded
-        ]
-      }
-    },
-
-    async onUploadImage ({ target }) {
-      if (!target.validity.valid) return
-      await this.$apollo.mutate({
-        mutation: UPLOAD_FILE,
-        variables: {
-          file: target.files[0]
-        },
-        update: (store, { data: { singleUpload } }) => {
-          const data = store.readQuery({ query: FILES })
-          data.files.push(singleUpload)
-          store.writeQuery({ query: FILES, data })
-        }
-      })
-    }
-  }
 }
 </script>
 
 <style lang="scss">
-.apollo-example{
-    .result{
-        ul{
-            li{
-                display:block;
-                padding:10px;
-                border:1px solid #ddd;
-                margin:10px;
+.apollo-example {
+    .result {
+        ul {
+            li {
+                display: block;
+                padding: 10px;
+                border: 1px solid #ddd;
+                margin: 10px;
             }
         }
     }

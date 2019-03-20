@@ -12,10 +12,7 @@ module.exports = {
     }
   },
 
-  pluginOptions: {
-    apollo: {
-      enableMocks: true,
-      enableEngine: true
-    }
+  devServer: {
+    port : 8081
   }
 }
