@@ -17,12 +17,15 @@
         <h3>Steps</h3>
         <ul class="steps" :style="{textAlign:'left'}">
             <li>step1. git clone https://github.com/strix-kr/front-boilerplate.git</li>
-            <li>step2. yarn install</li>
-            <li>step3. set application configs ./src/configs/setting.js</li>
-            <li>step4. set ant-style-variables ./src/styles/ant-variable.js</li>
-            <li>step5. graphql example <router-link to="/about">Here</router-link></li>
-            <li>step6. you have to write k8s.yaml, Jenkinsfile</li>
-            <li>step6. you have to remove unused components ./src/registerAntFramework after complete project </li>
+            <li>step2. change foldername : $ mv front-boilerplate {projectName}</li>
+            <li>step3. change names : ./package.json, manifast.json</li>
+            <li>step4. set application configs ./src/configs/setting.js</li>
+            <li>step5. set ant-style-variables ./src/styles/ant-variable.js</li>
+            <li>step6. to setting git remote : $ git remote set-url origin {projectRepo}</li>
+            <li>step7. $ cd {projectName} && yarn install</li>
+            <li>step8. graphql example <router-link to="/about">Here</router-link></li>
+            <li>step9. you have to write k8s.yaml, Jenkinsfile</li>
+            <li>step10. you have to remove unused components ./src/registerAntFramework after complete project </li>
         </ul>
 
         <h3>ant-design-vue && firebase login Example</h3>
@@ -160,7 +163,7 @@ a {
 }
 
 .steps{
-    max-width:500px;
+    max-width:550px;
     margin:0 auto;
     li{
         font-size:1.2em;
