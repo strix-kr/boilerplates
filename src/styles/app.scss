@@ -1,0 +1,26 @@
+#WebApp{
+    .container{
+        &.ant-layout-has-sider{
+            & > .ant-layout-sider{
+                margin-right:20px;
+                border-radius: 10px;
+                overflow:hidden;
+                padding-right:2px;
+
+                & > .ant-layout-sider-children{
+                    .ant-menu-inline,
+                    .ant-menu-vertical,
+                    .ant-menu-vertical-left{
+                        border-right:none;
+                    }
+                }
+            }
+        }
+
+        & > .ant-layout-content{
+            background-color: #2D3135;
+            border-radius:10px;
+            min-height:calc(100vh - 200px);
+        }
+    }
+}

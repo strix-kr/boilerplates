@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import router from './router'
+import { router } from './router/index'
 import { createProvider } from './vue-apollo'
 import firebase from 'firebase/app'
 import { appSetting } from '@/configs'
@@ -10,6 +10,8 @@ import '@/registerServiceWorker'
 import '@/registerAntFramework'
 
 import App from '@/App.vue'
+
+import './styles/app.scss'
 
 const config = {
   apiKey: appSetting.VUE_APP_FIREBASE_KEY,
@@ -22,6 +24,7 @@ const config = {
 
 firebase.initializeApp(config)
 moment.locale('ko')
+
 
 Vue.config.productionTip = false
 
