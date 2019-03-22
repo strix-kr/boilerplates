@@ -2,12 +2,14 @@ import { NotFound } from '@/layouts'
 import { DashBoard, TradeContainer } from '@/pages'
 
 import { TradeManage, TradeBid } from '@/components/trade'
+import HelloWorld from '@/components/HelloWorld'
+import ApolloExample from '@/components/ApolloExample'
 
 const routes = [
     {
         path: '/',
         name: 'home',
-        redirect: '/dashborad',
+        redirect: '/helloworld',
         meta: {
             breadTitle: 'Home'
         }
@@ -18,6 +20,22 @@ const routes = [
         component: DashBoard,
         meta: {
             breadTitle: '대시보드'
+        }
+    },
+    {
+        path: '/helloworld',
+        name: 'helloworld',
+        component: HelloWorld,
+        meta: {
+            breadTitle: '헬로월드'
+        }
+    },
+    {
+        path: '/about',
+        name: 'apollo',
+        component: ApolloExample,
+        meta: {
+            breadTitle: 'apollo'
         }
     },
     {

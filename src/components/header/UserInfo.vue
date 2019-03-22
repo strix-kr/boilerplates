@@ -7,7 +7,7 @@
             <router-link :to="{ name: 'trade', params: {id : 0, mode : 'read'} }"><a-icon type="bell" theme="filled"/></router-link>
         </a-col>
         <a-col span="4">
-            <router-link :to="{ name: 'tradeBid' }"><a-icon type="setting" theme="filled"/></router-link>
+            <router-link :to="{ name: 'dashborad' }"><a-icon type="setting" theme="filled"/></router-link>
         </a-col>
     </a-row>
 </template>

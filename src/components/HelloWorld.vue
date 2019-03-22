@@ -1,7 +1,5 @@
 <template>
     <div class="hello">
-        <h1>{{ msg }}</h1>
-
         <h3>Maintain</h3>
         <ul class="steps">
             <li><a href="https://cli.vuejs.org/guide/" target="_blank" rel="noopener">based boilerplate : vue/cli-service</a></li>
@@ -78,6 +76,7 @@
                     <a-button
                         type="primary"
                         @click.prevent="onLogin"
+                        block
                     >
                         로그인
                     </a-button>
@@ -141,34 +140,37 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-h3 {
-    margin: 40px 0 0;
-}
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-a {
-    color: #42b983;
-}
+<style lang="scss" scoped>
+.hello{
+    h3 {
+        text-align:center;
+        margin: 40px 0 0;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+    a {
+        color: #42b983;
+    }
 
-.login-wrapper{
-    max-width:400px;
-    margin:50px auto;
-}
+    .login-wrapper{
+        max-width:400px;
+        margin:50px auto;
+    }
 
-.steps{
-    max-width:550px;
-    margin:0 auto;
-    li{
-        font-size:1.2em;
-        display:block;
-        margin: 10px;
+    .steps{
+        max-width:550px;
+        margin:0 auto;
+        li{
+            font-size:1.2em;
+            display:block;
+            margin: 10px;
+        }
     }
 }
 </style>
