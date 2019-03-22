@@ -1,9 +1,7 @@
-import { NotFound, Sider } from '@/layouts'
+import { NotFound } from '@/layouts'
 import { DashBoard, TradeContainer } from '@/pages'
 
-import { TradeManage, TradeBid } from '@/components/trade';
-
-
+import { TradeManage, TradeBid } from '@/components/trade'
 
 const routes = [
     {
@@ -37,7 +35,7 @@ const routes = [
                 component: TradeManage,
                 meta: {
                     breadTitle: '집합전력자원관리'
-                },
+                }
             },
             {
                 path: 'bid',
@@ -45,7 +43,7 @@ const routes = [
                 component: TradeBid,
                 meta: {
                     breadTitle: '입찰현황'
-                },
+                }
             }
         ]
     },

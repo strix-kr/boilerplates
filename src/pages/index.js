@@ -3,5 +3,5 @@ import TradeContainer from './TradeContainer'
 
 export {
     DashBoard,
-    TradeContainer,
+    TradeContainer
 }

@@ -22,7 +22,7 @@ export default {
     components: {
         'header-view': Header,
         'footer-view': Footer,
-        'container' : Container
+        'container': Container
     }
 }
 </script>
