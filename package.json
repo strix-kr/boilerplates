@@ -11,7 +11,9 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.0",
     "ant-design-vue": "^1.3.7",
+    "core-js": "^3.0.0",
     "firebase": "^5.9.0",
     "moment": "^2.24.0",
     "register-service-worker": "^1.6.2",
@@ -20,7 +22,6 @@
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-optional-catch-binding": "^7.2.0",
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-e2e-cypress": "^3.5.0",
