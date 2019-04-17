@@ -1,3 +1,5 @@
+import 'babel-polyfill'
+
 import Vue from 'vue'
 import { router } from './router/index'
 import { createProvider } from './vue-apollo'
