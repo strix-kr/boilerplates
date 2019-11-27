@@ -1,2 +1,2 @@
 # Vue-with-graphql 
- - test
+ - not yet
