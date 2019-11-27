@@ -1,6 +1,0 @@
-mutation loginMutation ($input: IssueTokensByPasswordGrantPayload!) {
-  issueTokensByPasswordGrant (input: $input) {
-    accessToken,
-    refreshToken
-  }
-}

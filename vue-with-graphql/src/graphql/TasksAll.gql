@@ -1,7 +1,0 @@
-query tasksAll ($filter: TaskFilter) {
-	allTasks (filter: $filter) {
-		id
-		done
-		label
-	}
-}

@@ -1,8 +1,0 @@
-projects:
-  app:
-    schemaPath: .schema.graphql
-    includes:
-      - '**/*.gql'
-    extensions:
-      endpoints:
-        dev: 'https://api.dev.strix.kr/graphql'
