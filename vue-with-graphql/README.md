@@ -1,2 +1,0 @@
-# Vue-with-graphql 
- - test
