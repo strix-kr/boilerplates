@@ -1,0 +1,139 @@
+// global style
+@import '@/styles/variables.scss';
+
+$layout: ant-layout;
+
+body{
+  position:relative;
+
+  ::-webkit-scrollbar-track{
+      -webkit-border-radius: 10px;
+      background:transparent;
+  }
+
+  ::-webkit-scrollbar-corner{
+      background-color:transparent;
+  }
+
+  ::-webkit-scrollbar{
+      width:8px;
+      height:10px;
+  }
+
+  ::-webkit-scrollbar-thumb{
+      background-color: rgba($black-color, 0.2);
+      -webkit-border-radius:100px;
+  }
+
+  ::-webkit-scrollbar-thumb:vertical{
+      background-color: rgba($black-color, 0.2);
+      -webkit-border-radius: 100px;
+  }
+
+  ::-webkit-scrollbar-thumb:vertical:active{
+      background-color: rgba($black-color, 0.3);
+      -webkit-border-radius: 100px;
+  }
+
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  }
+}
+
+.ant-card{
+  &-head{
+    color:inherit;
+  }
+
+  &-body{
+    ::-webkit-scrollbar-track{
+        -webkit-border-radius: 10px;
+        background:transparent;
+    }
+
+    ::-webkit-scrollbar-corner{
+        background-color:transparent;
+    }
+
+    ::-webkit-scrollbar{
+        width:8px;
+        height:10px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color: rgba($black-color, 0.2);
+        -webkit-border-radius:100px;
+    }
+
+    ::-webkit-scrollbar-thumb:vertical{
+        background-color: rgba($black-color, 0.2);
+        -webkit-border-radius: 100px;
+    }
+
+    ::-webkit-scrollbar-thumb:vertical:active{
+        background-color: rgba($black-color, 0.3);
+        -webkit-border-radius: 100px;
+    }
+  }
+}
+
+#app{
+  overflow-y: hidden;
+  .container{
+    min-height: 70vh;
+    &.#{$layout}{
+      &.#{$layout}-has-sider{
+          & > .#{$layout}-sider:not(.tile-layout){
+              overflow:hidden;
+          }
+      }
+    }
+  }
+}
+
+
+.layout{
+  height: 100%;
+
+  &.content-layout{
+    & > div[class^='ant-col'],
+    & > .ant-col-24{
+      height:100%;
+    }
+  }
+  & > div[class^='ant-col'],
+  & > .ant-col-24{
+    & > .ant-card {
+      height: 100%;
+      & > .ant-card-head{
+        display: flex;
+        align-items: center;
+
+        & > .ant-card-head-wrapper{
+          flex: 0 0 100%;
+
+          .ant-card-head-title,
+          .ant-card-extra{
+            padding: 0;
+          }
+
+          .ant-card-head-title{
+            & > div[class^='ant-row']{
+              & > div[class^='ant-col']{
+                &:last-child{
+                  text-align:right;
+                }
+              }
+            }
+          }
+        }
+      }
+      & > .ant-card-body{
+        height: calc(100% - 48px);
+        box-sizing:border-box;
+      }
+    }
+  }
+}
