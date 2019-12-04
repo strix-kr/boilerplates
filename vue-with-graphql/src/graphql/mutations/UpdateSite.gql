@@ -1,0 +1,5 @@
+mutation ($input: TradeSitePayload!) {
+  trade {
+    updateSite (input: $input)
+  }
+}

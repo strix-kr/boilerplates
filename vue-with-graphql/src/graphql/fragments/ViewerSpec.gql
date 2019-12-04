@@ -1,0 +1,4 @@
+fragment ViewerSpec on TradeUser {
+    id
+    name
+}

@@ -1,0 +1,4 @@
+fragment AgencySpec on TradeAgency {
+    id
+    name
+}

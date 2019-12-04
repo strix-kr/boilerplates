@@ -1,0 +1,34 @@
+#import "../fragments/ViewerSpec.gql"
+#import "../fragments/BrokerSpec.gql"
+#import "../fragments/AgencySpec.gql"
+#import "../fragments/GeneratorSpec.gql"
+
+#import "../fragments/SiteSpec.gql"
+
+query SiteList {
+    trade {
+        viewer{
+            ...ViewerSpec
+            role {
+                ...on TradeBroker {
+                    ...BrokerSpec
+                    sites {
+                        ...SiteSpec
+                    }
+                }
+                ...on TradeAgency {
+                    ...AgencySpec
+                    sites {
+                        ...SiteSpec
+                    }
+                }
+                ...on TradeGenerator {
+                    ...GeneratorSpec
+                    sites {
+                        ...SiteSpec
+                    }
+                }
+            }
+        }
+    }
+}

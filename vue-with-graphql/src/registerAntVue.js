@@ -33,7 +33,7 @@ import {
   LocaleProvider,
   // message,
   Menu,
-  // Modal,
+  Modal,
   // notification,
   // Pagination,
   // Popconfirm,
@@ -57,7 +57,7 @@ import {
   // Timeline,
   // Tooltip,
   // Mention,
-  // Upload,
+  Upload,
   // version,
   // Drawer,
   // Skeleton,
@@ -69,7 +69,7 @@ import {
 // Vue.prototype.$notification = notification
 // Vue.prototype.$info = Modal.info
 // Vue.prototype.$success = Modal.success
-// Vue.prototype.$error = Modal.error
+Vue.prototype.$error = Modal.error;
 // Vue.prototype.$warning = Modal.warning
 // Vue.prototype.$confirm = Modal.confirm
 
@@ -101,7 +101,7 @@ Vue.use(Layout);
 // Vue.use(List)
 Vue.use(LocaleProvider);
 Vue.use(Menu);
-// Vue.use(Modal)
+Vue.use(Modal);
 // Vue.use(Pagination)
 // Vue.use(Popconfirm)
 // Vue.use(Popover)
@@ -123,7 +123,7 @@ Vue.use(Spin);
 // Vue.use(TimePicker)
 // Vue.use(Timeline)
 // Vue.use(Tooltip)
-// Vue.use(Upload)
+Vue.use(Upload);
 // Vue.use(Drawer)
 // Vue.use(Skeleton)
 // Vue.use(Comment)

@@ -1,0 +1,11 @@
+query Viewer {
+    isLoggedIn @client
+    trade {
+        viewer{
+            id
+            name
+            type
+            platform
+        }
+    }
+}

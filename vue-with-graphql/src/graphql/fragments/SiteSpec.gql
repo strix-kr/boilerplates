@@ -1,0 +1,4 @@
+fragment SiteSpec on TradeSite {
+    id
+    name
+}

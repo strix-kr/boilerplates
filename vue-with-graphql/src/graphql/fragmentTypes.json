@@ -1,0 +1,182 @@
+{
+  "__schema": {
+    "types": [
+      {
+        "kind": "INTERFACE",
+        "name": "Node",
+        "possibleTypes": [
+          {
+            "name": "File"
+          },
+          {
+            "name": "IAMUser"
+          },
+          {
+            "name": "TestUser"
+          },
+          {
+            "name": "PmUser"
+          },
+          {
+            "name": "PmKepco"
+          },
+          {
+            "name": "DrUser"
+          },
+          {
+            "name": "TradeUser"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "User",
+        "possibleTypes": [
+          {
+            "name": "IAMUser"
+          },
+          {
+            "name": "TestUser"
+          },
+          {
+            "name": "PmUser"
+          },
+          {
+            "name": "DrUser"
+          },
+          {
+            "name": "TradeUser"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "PmKcust",
+        "possibleTypes": [
+          {
+            "name": "PmKepco"
+          },
+          {
+            "name": "PmContractChildKepco"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "PmSmartMeter",
+        "possibleTypes": [
+          {
+            "name": "PmSmartMeterEims"
+          },
+          {
+            "name": "PmSmartMeterKepco"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "PmNotiConfig",
+        "possibleTypes": [
+          {
+            "name": "PmContractNotiConfig"
+          },
+          {
+            "name": "PmGlobalNotiConfig"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "ITradeAlarm",
+        "possibleTypes": [
+          {
+            "name": "ITradeAlarmPV"
+          },
+          {
+            "name": "ITradeAlarmESS"
+          },
+          {
+            "name": "ITradeAlarmPVESS"
+          },
+          {
+            "name": "ITradeAlarmWT"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "ITradeSite",
+        "possibleTypes": [
+          {
+            "name": "TradeSitePVWrapper"
+          },
+          {
+            "name": "TradeSiteESSWrapper"
+          },
+          {
+            "name": "TradeSitePVESSWrapper"
+          },
+          {
+            "name": "TradeSiteWTWrapper"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "ITradeStatsOfSite",
+        "possibleTypes": [
+          {
+            "name": "TradeStatsOfSitePVWrapper"
+          },
+          {
+            "name": "TradeStatsOfSiteESSWrapper"
+          },
+          {
+            "name": "TradeStatsOfSitePVESSWrapper"
+          },
+          {
+            "name": "TradeStatsOfSiteWTWrapper"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "ITradeContracts",
+        "possibleTypes": [
+          {
+            "name": "ITradeContractPV"
+          },
+          {
+            "name": "ITradeContractESS"
+          },
+          {
+            "name": "ITradeContractPVESS"
+          },
+          {
+            "name": "ITradeContractWT"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "ITradeType",
+        "possibleTypes": [
+          {
+            "name": "TradeBroker"
+          },
+          {
+            "name": "TradeAgency"
+          },
+          {
+            "name": "TradeGenerator"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "UserList",
+        "possibleTypes": []
+      }
+    ]
+  }
+}

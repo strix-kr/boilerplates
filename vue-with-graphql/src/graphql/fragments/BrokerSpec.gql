@@ -1,0 +1,4 @@
+fragment BrokerSpec on TradeBroker {
+    id
+    name
+}

@@ -110,3 +110,17 @@ yarn build
 ```
 yarn lint
 ```
+
+graphql
+- apollo client, apollo-cache-inmemory,  apollo-upload-client
+- vue-apollo - provider, apollo query
+- graphql codegen/cli for fragment-matcher
+- apollo-link-retry 3회 
+
+- file upload apollo-upload-client
+- localState state manage (apollo client, @client) 
+
+- manage packageJson 
+
+firebase 
+- graphql auth 
