@@ -27,11 +27,11 @@ moment: [moment@^2.24.0](https://momentjs.com/docs/)
   * graphql-codegen: fragmentMatcher, introspection
     
 @vue-apollo: [Vue-Apollo](https://vue-apollo.netlify.com/)
-  * Apollo Provider [Go](https://vue-apollo.netlify.com/api/apollo-provider.html)
+  * Apollo Provider [Link](https://vue-apollo.netlify.com/api/apollo-provider.html)
     * ApolloQuery component, Smart Query
 
-@firebase : [Go] (https://firebase.google.com/docs)
-  * firebase/auth token
+@firebase : [Link](https://firebase.google.com/docs)
+  * firebase/auth login && token
 
 ## Structure
 
