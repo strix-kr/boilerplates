@@ -12,6 +12,8 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-underscore-dangle': ['error', { allow: ['__typename'] }],
+    'no-param-reassign': ['error', { props: false }],
   },
   parserOptions: {
     parser: 'babel-eslint',

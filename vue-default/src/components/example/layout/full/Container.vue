@@ -18,23 +18,23 @@
 </template>
 
 <script>
-import { Content, Sider } from '@/layouts'
+import { Content, Sider } from '@/layouts';
 
 export default {
   name: 'Container',
   components: {
     'content-layout': Content,
-    'sider-layout': Sider
+    'sider-layout': Sider,
   },
-  data () {
+  data() {
     return {
-    }
+    };
   },
   computed: {
   },
   methods: {
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

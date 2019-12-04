@@ -1,6 +1,6 @@
 import { NotFound, Layout, Login } from '@/pages';
 
-import { Container as HomeContainer } from '@/components/home'
+import { Container as HomeContainer } from '@/components/home';
 
 // https://router.vuejs.org/kr/guide/advanced/meta.html
 // 라우터를 정의하고 component 속성을 지정합니다.
@@ -76,14 +76,14 @@ const routes = [
             path: 'mix',
             name: 'mix',
             component: () => import(/* webpackChunkName: "layout" */ '@/components/example/layout/mix/Container.vue'),
-          }
-        ]
+          },
+        ],
       },
     ],
   },
   {
     path: '/login',
-    name: `login (Don't use Layout)`,
+    name: 'login (Don\'t use Layout)',
     component: Login,
     meta: {
       navigation: {
