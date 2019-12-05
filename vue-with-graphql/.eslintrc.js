@@ -1,4 +1,4 @@
-const schema = require('./src/graphql/schema.json');
+const schema = require('./src/graphql/introspection.json');
 
 module.exports = {
   root: true,

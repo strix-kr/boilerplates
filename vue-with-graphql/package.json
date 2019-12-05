@@ -72,6 +72,14 @@
       "messagingSenderId": "507394026556"
     }
   },
+  "graphqlConfig": {
+    "production": {
+      "endPoint": "https://gw.strix.co.kr"
+    },
+    "development": {
+      "endPoint": "https://gw.dev.strix.co.kr"
+    }
+  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },

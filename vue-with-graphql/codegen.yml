@@ -7,7 +7,7 @@ generates:
   ./src/graphql/fragmentTypes.json:
     plugins:
       - fragment-matcher
-  ./src/graphql/schema.json:
+  ./src/graphql/introspection.json:
     plugins:
       - introspection
     config:

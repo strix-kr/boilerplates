@@ -17,6 +17,9 @@ import { initialState, typeDefs, resolvers } from './localState';
 import ChangeLoading from './mutations/ChangeLoading.gql';
 import ChangeLoggedState from './mutations/ChangeLoggedState.gql';
 
+import packageJson from '../../package.json';
+import { service } from '@/configs';
+
 // Install the vue plugin
 Vue.use(VueApollo);
 
@@ -61,10 +64,13 @@ export async function logout(apolloClient = null) {
     });
 }
 
+// setting endpoint from package.json
+const endPoint = service.getValue(packageJson, `graphqlConfig.${process.env.VUE_APP_ENV || 'development'}.endPoint`)
+
 // HTTP connection to the API
 const httpLink = createUploadLink({
   // You should use an absolute URL here
-  uri: 'https://gw.dev.strix.co.kr/graphql',
+  uri: `${endPoint}/graphql`,
   credentials: 'omit',
 });
 
