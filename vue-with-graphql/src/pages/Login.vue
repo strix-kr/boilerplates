@@ -91,7 +91,7 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           const { email, password } = values;
-          return firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+          return firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
             .then(() => firebase.auth().signInWithEmailAndPassword(email, password))
             .catch((error) => {
               console.log('error', error);

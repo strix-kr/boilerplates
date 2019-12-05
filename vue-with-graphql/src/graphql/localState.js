@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 const initialState = {
-  isLoggedIn: !!localStorage.getItem('token'),
+  isLoggedIn: false,
   loading: false,
 };
 
@@ -15,10 +15,11 @@ const typeDefs = gql`
 const resolvers = {
   Mutation: {
     onChangeLoading: (_root, { loading }, { cache }) => {
-      // console.log('loading', loading)
-      // console.log('cache', cache)
       const data = { loading };
-      // console.log('data', data)
+      cache.writeData({ data });
+    },
+    onChangeLogInState: (_root, { isLoggedIn }, { cache}) => {
+      const data = { isLoggedIn };
       cache.writeData({ data });
     },
   },

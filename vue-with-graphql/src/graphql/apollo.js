@@ -15,6 +15,7 @@ import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemo
 import introspectionQueryResultData from '@/graphql/fragmentTypes.json';
 import { initialState, typeDefs, resolvers } from './localState';
 import ChangeLoading from './mutations/ChangeLoading.gql';
+import ChangeLoggedState from './mutations/ChangeLoggedState.gql';
 
 // Install the vue plugin
 Vue.use(VueApollo);
@@ -39,11 +40,20 @@ export function mutationErrorHandler(error) {
   console.log('mutationErrorHandler', error);
 }
 
-export async function logout(apolloClient) {
+export async function logout(apolloClient = null) {
+  if (!apolloClient) {
+    return
+  }
   apolloClient.stop();
 
   return firebase.auth().signOut()
     .then(() => {
+      apolloClient.mutate({
+        mutation: ChangeLoggedState,
+        variables: {
+          isLoggedIn: false
+        }
+      })
       localStorage.setItem('token', null);
     })
     .then(() => {
@@ -103,12 +113,17 @@ const retryLink = new RetryLink({
 // Cache implementation
 const cache = new InMemoryCache({ fragmentMatcher });
 
-// Local Cache init
-cache.writeData({
-  data: initialState,
-});
-
 export function createProvider() {
+
+  // firebase init 후에 로그인 상태를 localState에 추가 
+  const data = {
+    ...initialState,
+    isLoggedIn: !!firebase.auth().currentUser
+  }
+
+  // Local Cache init
+  cache.writeData({ data });
+
   // Create the apollo client
   const apolloClient = new ApolloClient({
     link: ApolloLink.from([authLink, retryLink, httpLink]),
@@ -119,7 +134,7 @@ export function createProvider() {
     resolvers,
   });
 
-  apolloClient.onResetStore(() => cache.writeData({ data: initialState }));
+  apolloClient.onResetStore(() => cache.writeData({ data }));
 
   const apolloProvider = new VueApollo({
     defaultClient: apolloClient,

@@ -33,7 +33,6 @@ export default {
   },
   computed: {
     getLoading() {
-      // console.log('this.localLoding', this.loading, this.localLoding)
       return this.loading || this.localLoding;
     },
   },

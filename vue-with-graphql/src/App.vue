@@ -18,6 +18,8 @@ import moment from 'moment';
 import koKR from 'ant-design-vue/lib/locale-provider/ko_KR';
 
 import { Spinner } from '@/components/commons';
+import LoggedIn from '@/graphql/queries/LoggedIn.gql';
+import { logout } from '@/graphql/apollo';
 
 moment.locale('ko');
 
@@ -32,9 +34,26 @@ export default {
       loading: false,
     };
   },
-  mounted() {
+  beforeCreate () {
+    // 첫 로딩시에 Guard 
+    const client = this.$apollo.getClient();
+    const { isLoggedIn } = client.readQuery({ 
+      query: LoggedIn
+    })
+
+    if (!isLoggedIn) {
+      if (this.$route.path !== '/login') {
+        logout(client)
+        return this.$router.replace({
+          path: '/login',
+        });
+      }
+    }
+  },
+  async mounted() {
+    // component Guard
     // firebase 유저인증 handler
-    firebase.auth().onAuthStateChanged((user) => {
+    await firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         return user.getIdToken(false)
           .then((token) => {
@@ -55,6 +74,7 @@ export default {
           });
       }
       if (this.$route.path !== '/login') {
+        logout(this.$apollo.getClient())
         return this.$router.replace({
           path: '/login',
         });
