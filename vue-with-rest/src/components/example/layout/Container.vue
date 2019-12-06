@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { store, type } from '@/store';
+import { store } from '@/store';
 
 export default {
   name: 'Container',

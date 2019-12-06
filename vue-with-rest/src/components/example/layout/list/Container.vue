@@ -33,7 +33,6 @@ export default {
     'content-body': Content,
   },
   async created() {
-
     if (Object.keys(store.state.fetchData).length === 0) {
       await this.setDataToState();
     }
@@ -52,18 +51,18 @@ export default {
 
       store.commit(type.TOGGLE_LOADING);
 
-      await Fetcher.get(url).then(res => {
+      await Fetcher.get(url).then((res) => {
         store.commit(type.UPDATE_POST_ITEMS, res.data);
-        list = res.data.map(obj => {
-          const { url } = api.comments(obj.id);
-          return Fetcher.get(url);
+        list = res.data.map((obj) => {
+          const commentApi = api.comments(obj.id);
+          return Fetcher.get(commentApi.url);
         });
       });
 
-      await Fetcher.all(list).then(data => {
+      await Fetcher.all(list).then((data) => {
         const comments = {};
-        data.forEach(obj => {
-          if(obj.data.length > 0){
+        data.forEach((obj) => {
+          if (obj.data.length > 0) {
             const key = obj.data[0].postId;
             comments[key] = obj.data;
           }

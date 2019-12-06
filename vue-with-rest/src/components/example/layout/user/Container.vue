@@ -136,11 +136,11 @@ export default {
         if (err) {
           return;
         }
-        
-        if(this.willCreateUser && this.isExistUser(values)){
+
+        if (this.willCreateUser && this.isExistUser(values)) {
           this.$warning({
-            title: 'already exist email'
-          })
+            title: 'already exist email',
+          });
           return;
         }
 

@@ -26,16 +26,14 @@ const initialState = () => ({
   isLogIn: false,
   status: {
     isLoading: false,
-  }
+  },
 });
 
 const store = new Vuex.Store({
   plugins: [createPersistedState()].concat(isProduction ? [] : [createLogger()]),
   state: initialState(),
   getters: {
-    comments: (state) => (postId) => {
-      return state.fetchData.comments[postId];
-    },
+    comments: state => postId => state.fetchData.comments[postId],
     currentUser(state) {
       return state.users[state.currentUserId];
     },
@@ -49,7 +47,7 @@ const store = new Vuex.Store({
       const item = state.fetchData.posts.sort((a, b) => b.id - a.id)[0];
       return (item) ? item.id + 1 : 1;
     },
-    currentState (state, ctx) {
+    currentState(state, ctx) {
       const newState = {
         user: ctx.currentUser,
         isLogin: state.isLogin,

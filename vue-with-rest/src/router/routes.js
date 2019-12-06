@@ -65,7 +65,7 @@ const routes = [
           {
             path: 'local',
             name: 'local',
-            component: () => import(/* webpackChunkName: "layout" */ '@/components/example/layout/local/Container.vue' ),
+            component: () => import(/* webpackChunkName: "layout" */ '@/components/example/layout/local/Container.vue'),
           },
         ],
       },

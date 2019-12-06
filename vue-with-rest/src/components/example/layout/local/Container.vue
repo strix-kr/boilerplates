@@ -26,22 +26,22 @@ export default {
   components: {
     'content-layout': Content,
   },
-  data () {
+  data() {
     return {
       localState: this.getCurrentState(),
       isActive: false,
-    }
+    };
   },
   watch: {
-    isActive () {
+    isActive() {
       this.localState = this.getCurrentState();
-    }
+    },
   },
   methods: {
-    getCurrentState () {
+    getCurrentState() {
       return store.getters.currentState;
     },
-    changeState () {
+    changeState() {
       store.commit(type.TOGGLE_LOADING);
       this.isActive = true;
 
@@ -51,7 +51,7 @@ export default {
       }, 600);
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

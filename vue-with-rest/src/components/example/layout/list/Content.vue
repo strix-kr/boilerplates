@@ -43,7 +43,6 @@
 </template>
 <script>
 import virtualList from 'vue-virtual-scroll-list';
-import { api, Fetcher } from '@/configs';
 import { store, type } from '@/store';
 
 export default {
