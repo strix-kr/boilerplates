@@ -6,13 +6,13 @@
         "name": "Node",
         "possibleTypes": [
           {
-            "name": "File"
-          },
-          {
             "name": "IAMUser"
           },
           {
             "name": "TestUser"
+          },
+          {
+            "name": "File"
           },
           {
             "name": "PmUser"

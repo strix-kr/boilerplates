@@ -45,7 +45,7 @@ export function mutationErrorHandler(error) {
 
 export async function logout(apolloClient = null) {
   if (!apolloClient) {
-    return
+    return;
   }
   apolloClient.stop();
 
@@ -54,9 +54,9 @@ export async function logout(apolloClient = null) {
       apolloClient.mutate({
         mutation: ChangeLoggedState,
         variables: {
-          isLoggedIn: false
-        }
-      })
+          isLoggedIn: false,
+        },
+      });
       localStorage.setItem('token', null);
     })
     .then(() => {
@@ -65,7 +65,7 @@ export async function logout(apolloClient = null) {
 }
 
 // setting endpoint from package.json
-const endPoint = service.getValue(packageJson, `graphqlConfig.${process.env.VUE_APP_ENV || 'development'}.endPoint`)
+const endPoint = service.getValue(packageJson, `graphqlConfig.${process.env.VUE_APP_ENV || 'development'}.endPoint`);
 
 // HTTP connection to the API
 const httpLink = createUploadLink({
@@ -120,12 +120,11 @@ const retryLink = new RetryLink({
 const cache = new InMemoryCache({ fragmentMatcher });
 
 export function createProvider() {
-
-  // firebase init 후에 로그인 상태를 localState에 추가 
+  // firebase init 후에 로그인 상태를 localState에 추가
   const data = {
     ...initialState,
-    isLoggedIn: !!firebase.auth().currentUser
-  }
+    isLoggedIn: !!firebase.auth().currentUser,
+  };
 
   // Local Cache init
   cache.writeData({ data });
