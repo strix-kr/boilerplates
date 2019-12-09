@@ -47,7 +47,12 @@
       "git add"
     ]
   },
-  "endPoints": {
-    "sample": "https://jsonplaceholder.typicode.com"
+  "apiConfigs": {
+    "production": {
+
+    },
+    "development": {
+      "endPoint": "https://jsonplaceholder.typicode.com"
+    }
   }
 }
