@@ -46,8 +46,8 @@ export default {
       this.isActive = true;
 
       setTimeout(() => {
-        this.isActive = false;
         store.commit(type.TOGGLE_LOADING);
+        this.isActive = false;
       }, 600);
     },
   },

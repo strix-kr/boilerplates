@@ -51,7 +51,7 @@ const store = new Vuex.Store({
       const newState = {
         user: ctx.currentUser,
         isLogin: state.isLogin,
-        isLoading: state.isLoading,
+        isLoading: state.status.isLoading,
       };
       return newState;
     },
