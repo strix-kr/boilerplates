@@ -91,6 +91,12 @@ project
 [![Yarn@1.9.4](https://img.shields.io/badge/Yarn-Required-red)](https://yarnpkg.com/lang/en/)
 * 서비스를 배포할 계획이라면 반드시 위 사항을 준수하세요. 
 
+
+## 추가 설정 
+  * 본 template은 상태관리를 포함하고 있지 않습니다. 상태관리는 [vuex](https://vuex.vuejs.org/kr/)를 권장합니다.
+  * chart를 추가하려면 [echart](https://echarts.apache.org/en/index.html) 와 [vue-echarts](https://github.com/ecomfe/vue-echarts)를 권장합니다.
+  * polyfill이 필요한 경우 [browserlist](https://github.com/browserslist/browserslist) 와 [vue-cli#browserlist] (https://cli.vuejs.org/guide/browser-compatibility.html#browserslist) 를 참고하세요.
+
 ### setup 
 ```
 yarn install

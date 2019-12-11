@@ -45,7 +45,7 @@ export function mutationErrorHandler(error) {
 
 export async function logout(apolloClient = null) {
   if (!apolloClient) {
-    return
+    return true;
   }
   apolloClient.stop();
 
