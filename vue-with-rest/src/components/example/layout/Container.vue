@@ -2,60 +2,33 @@
   <div class="example">
     <div class="inner-menu">
       <router-link
-        :to="{ name : 'full' }"
-      >
-        <a-button >FullLayout(Sider and Content)</a-button>
-      </router-link>
-      <router-link
-        :to="{ name : 'content' }"
-      >
-        <a-button >Content Layout(Only Content)</a-button>
-      </router-link>
-      <router-link
-        :to="{ name : 'tile' }"
-      >
-        <a-button >Tile(Tile and Content)</a-button>
-      </router-link>
-      <router-link
-        :to="{ name : 'mix' }"
-      >
-        <a-button >Mix(Sider and Tile and Content)</a-button>
-      </router-link>
-
-      <router-link
         :to="{ name : 'list' }"
       >
         <a-button>List(Tile and List)</a-button>
       </router-link>
 
       <router-link
-        :to="{ name : 'form' }"
+        :to="{ name : 'local' }"
       >
-        <a-button>Form(Only Form)</a-button>
+        <a-button>Local State</a-button>
       </router-link>
     </div>
     <router-view :key="$route.path"/>
+    <div class="icon-loading" v-show="status.isLoading"><a-icon type="loading"/></div>
   </div>
 </template>
 
 <script>
-import { Content, Sider } from '@/layouts'
+import { store } from '@/store';
 
 export default {
   name: 'Container',
-  components: {
-    'content-layout': Content,
-    'sider-layout': Sider
-  },
-  data () {
+  data() {
     return {
-    }
+      status: store.state.status,
+    };
   },
-  computed: {
-  },
-  methods: {
-  }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -75,4 +48,10 @@ export default {
   }
 }
 
+.icon-loading{
+  font-size: 50px;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+}
 </style>

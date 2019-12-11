@@ -29,7 +29,7 @@
           <template v-slot:extra>
           <virtual-list :size="100" :remain="5">
               <a-card
-              v-for="item of modal.data" 
+              v-for="item of modal.data"
               :key="item.id"
               :bodyStyle="modal.bodyStyle"
               >
@@ -42,134 +42,80 @@
   </div>
 </template>
 <script>
-import virtualList from 'vue-virtual-scroll-list'
-import { api, fetcher, util } from '@/configs'
+import virtualList from 'vue-virtual-scroll-list';
+import { store, type } from '@/store';
 
-  export default {
-    name: 'Content',
-    components: {
-      'virtual-list': virtualList,
+export default {
+  name: 'Content',
+  components: {
+    'virtual-list': virtualList,
+  },
+  props: {
+    category: {
+      type: String,
+      default: null,
     },
-    props: {
-      type: {
-        type: String,
-        default: null,
-      }
-    },
-    data() {
-      return {
+  },
+  data() {
+    return {
+      data: [],
+      modal: {},
+      initModal: {
+        id: 0,
+        title: '',
+        content: '',
+        visible: false,
         data: [],
-        modal: {},
-        initModal: {
-          id: 0,
-          title: '',
-          content: '',
-          visible: false,
-          data: [],
-          bodyStyle: {
-            margin: '5px 0px',
-          },
+        bodyStyle: {
+          margin: '5px 0px',
         },
+      },
+    };
+  },
+  mounted() {
+    this.initModalData();
+    this.data = store.state.fetchData.posts;
+  },
+  computed: {
+    modalWidth() {
+      return `${100 / 3}%`;
+    },
+  },
+  methods: {
+    async toggleModal(id) {
+      this.modal.visible = !this.modal.visible;
+
+      // when open modal
+      if (this.modal.visible) {
+        this.setModalData(id);
+      } else {
+        this.initModalData();
       }
     },
-    mounted () {
-      this.initModalData()
-
-      const { url, endPoint, child } = api[this.type]()
-      
-      fetcher
-      .get(url)
-      .then((res) => {
-        if(res.status !== 200){
-          console.warn(res)
-          alert('fail data load')
-          return
-        }
-
-        this.data = res.data.map(el => {
-          el.endPoint = endPoint
-          el.child = child
-          return el
-        })
-      })
-      .catch(error => {
-        console.error(error)
-        alert('data load error')
-      })
+    initModalData() {
+      this.modal = { ...this.initModal };
     },
-    computed: {
-      modalWidth () {
-        return `${100/3}%`
-      },
+    setModalData(id) {
+      const selectedItem = this.data.find(el => el.id === id);
+      if (!selectedItem) {
+        return;
+      }
+
+      this.modal.id = selectedItem.id;
+      this.modal.title = selectedItem.title;
+      this.modal.content = selectedItem;
+      this.getChildData(selectedItem.id);
     },
-    methods: {
-      toggleModal (id) {
-        this.modal.visible = !this.modal.visible
-        // when open modal
-        if(this.modal.visible){
-          this.setModalData(id)
-        } else {
-          this.initModalData()
-        }
-      },
-      initModalData () {
-        this.modal = {...this.initModal}
-      },
-      setModalData (id) {
-        const selectedItem = this.data.find(el => el.id === id)
-        if( !selectedItem ){
-            return
-        }
-
-        this.modal.id = selectedItem.id
-        this.modal.title = selectedItem.title
-        this.modal.content = selectedItem
-
-        const child = selectedItem.child
-        if (child) {
-            const { url } = api[child](id)
-            this.getChildData(url)
-        }
-      },
-      getChildData (url) {
-        fetcher
-        .get(url)
-        .then(res => {
-          if(res.status !== 200){
-              console.warn('fail')
-              alert('fail')
-              return
-          }
-          
-          this.modal.data = res.data
-        })
-        .catch(error => {
-            console.error(error)
-            alert('error')
-        })
-      },
-      onRemoveItem () {
-        const id = this.modal.id
-        const { url } = api.posts(id)
-
-        fetcher
-        .delete(url)
-        .then(res => {
-            if(res.status !== 200){
-                console.warn(res)
-                alert('fail data remove')
-                return
-            }
-            
-            alert(`success!`)
-        })
-        .catch(error => {
-            console.error(error)
-            alert('error')
-        })
-      },
-    }
-  };
+    getChildData(postId) {
+      this.modal.data = store.getters.comments(postId);
+    },
+    onRemoveItem() {
+      const { id } = this.modal;
+      store.commit(type.DELETE_ITEM, id);
+      this.toggleModal();
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .modalCard .ant-card.ant-card-bordered{

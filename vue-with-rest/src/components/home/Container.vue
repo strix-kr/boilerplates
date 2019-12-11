@@ -1,20 +1,20 @@
 <template>
   <div class="home">
     <img alt="Vue logo" :src="logo">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld />
   </div>
 </template>
 
 <script>
 import HelloWorld from './HelloWorld.vue';
-import logo from '@/assets/logo.png'
+import logo from '@/assets/logo.png';
 
 export default {
   name: 'Container',
-  data () {
+  data() {
     return {
-      logo
-    }
+      logo,
+    };
   },
   components: {
     HelloWorld,

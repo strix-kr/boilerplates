@@ -50,8 +50,15 @@
                       :disabled="hasErrors(form.getFieldsError())"
                       @click="onLogin"
                     >
-                      Back to Home
+                      Login
                     </a-button>
+                    <router-link to="/user">
+                      <a-button
+                        block
+                      >
+                        Sign Up
+                      </a-button>
+                    </router-link>
                   </a-form-item>
                 </a-form>
               </a-col>
@@ -63,6 +70,7 @@
 </template>
 
 <script>
+import { store } from '@/store';
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
@@ -86,8 +94,19 @@ export default {
       return isFieldTouched('password') && getFieldError('password');
     },
     onLogin() {
-      this.$router.replace({
-        name: 'root',
+      this.form.validateFields((err, { email, password }) => {
+        if (err) return;
+
+        const isAvailable = store.getters.isAvailableAccount(email, password);
+        if (isAvailable) {
+          store.commit('login', { email, password });
+          this.$router.push('/home');
+        } else {
+          this.$warning({
+            title: 'Login failed',
+            content: 'not exist account',
+          });
+        }
       });
     },
   },

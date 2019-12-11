@@ -71,9 +71,8 @@ export default {
             mode: 'read',
           },
         });
-      } else {
-        return true
       }
+      return true;
     },
   },
 

@@ -18,7 +18,7 @@ const resolvers = {
       const data = { loading };
       cache.writeData({ data });
     },
-    onChangeLogInState: (_root, { isLoggedIn }, { cache}) => {
+    onChangeLogInState: (_root, { isLoggedIn }, { cache }) => {
       const data = { isLoggedIn };
       cache.writeData({ data });
     },

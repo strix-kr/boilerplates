@@ -34,16 +34,16 @@ export default {
       loading: false,
     };
   },
-  beforeCreate () {
-    // 첫 로딩시에 Guard 
+  beforeCreate() {
+    // 첫 로딩시에 Guard
     const client = this.$apollo.getClient();
-    const { isLoggedIn } = client.readQuery({ 
-      query: LoggedIn
-    })
+    const { isLoggedIn } = client.readQuery({
+      query: LoggedIn,
+    });
 
     if (!isLoggedIn) {
       if (this.$route.path !== '/login') {
-        logout(client)
+        logout(client);
         return this.$router.replace({
           path: '/login',
         });
@@ -74,7 +74,7 @@ export default {
           });
       }
       if (this.$route.path !== '/login') {
-        logout(this.$apollo.getClient())
+        logout(this.$apollo.getClient());
         return this.$router.replace({
           path: '/login',
         });

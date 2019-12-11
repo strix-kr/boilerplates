@@ -67,11 +67,11 @@ import {
 
 // Vue.prototype.$message = message
 // Vue.prototype.$notification = notification
-Vue.prototype.$info = Modal.info
-Vue.prototype.$success = Modal.success
-Vue.prototype.$error = Modal.error
-Vue.prototype.$warning = Modal.warning
-Vue.prototype.$confirm = Modal.confirm
+Vue.prototype.$info = Modal.info;
+Vue.prototype.$success = Modal.success;
+Vue.prototype.$error = Modal.error;
+Vue.prototype.$warning = Modal.warning;
+Vue.prototype.$confirm = Modal.confirm;
 
 /* v1.1.3+ registration methods */
 // Vue.use(Affix)

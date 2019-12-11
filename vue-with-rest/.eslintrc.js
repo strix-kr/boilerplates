@@ -10,6 +10,7 @@ module.exports = {
   rules: {
     'max-len': 'off',
     'import/prefer-default-export': 'off',
+    // 'import/extensions': ['error', 'ignorePackages'],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
   },

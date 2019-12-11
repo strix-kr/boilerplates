@@ -27,50 +27,33 @@
 </template>
 
 <script>
-import { api, fetcher, util } from '@/configs'
+import { store, type } from '@/store';
 
 export default {
-    name: 'ContentHeader',
-    props: {
-        type: {
-            type: String,
-            default: null,
-        }
+  name: 'ContentHeader',
+  data() {
+    return {
+      form: this.$form.createForm(this, { name: 'createForm' }),
+      modal: {
+        visible: false,
+      },
+    };
+  },
+  methods: {
+    toggleModal() {
+      this.modal.visible = !this.modal.visible;
     },
-    data () {
-        return {
-            form: this.$form.createForm(this, { name: 'createForm' }),
-            modal: {
-                visible: false
-            },
-        }
+    onCreateItem() {
+      this.form.validateFields((err, values) => {
+        if (err) return;
+
+        store.commit(type.ADD_ITEM, values);
+        this.toggleModal();
+      });
     },
-    methods: {
-        toggleModal () {
-            this.modal.visible = !this.modal.visible
-        },
-        onCreateItem () {
-            this.form.validateFields((err, values) => {
-                if(err) return
-                
-                const { url, param } = api[this.type](null, values)
+  },
 
-                fetcher
-                .post(url, param)
-                .then((res) => {
-                    if(res.status !== 201){
-                        console.error(res)
-                        alert('fail!')
-                    }
-                    
-                    alert(`success! \n\n ${JSON.stringify(res.data)}`)
-                    this.modal.visible = false
-                })
-            })
-        },
-    }
-
-}
+};
 </script>
 
 <style lang="scss" scoped>
