@@ -1,0 +1,4 @@
+fragment GeneratorSpec on TradeGenerator {
+    id
+    name
+}

@@ -1,0 +1,3 @@
+mutation ChangeLoggedState($isLoggedIn: Boolean!){
+  onChangeLogInState(isLoggedIn: $isLoggedIn) @client
+}

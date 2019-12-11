@@ -2,24 +2,24 @@
   <div class="example">
     <div class="inner-menu">
       <router-link
-        :to="{ name : 'full' }"
+        :to="{ name : 'query' }"
       >
-        <a-button >FullLayout(Sider and Content)</a-button>
+        <a-button >Query</a-button>
       </router-link>
       <router-link
-        :to="{ name : 'content' }"
+        :to="{ name : 'mutation' }"
       >
-        <a-button >Content Layout(Only Content)</a-button>
+        <a-button >Mutation</a-button>
       </router-link>
       <router-link
-        :to="{ name : 'tile' }"
+        :to="{ name : 'upload' }"
       >
-        <a-button >Tile(Tile and Content)</a-button>
+        <a-button >File Upload</a-button>
       </router-link>
       <router-link
-        :to="{ name : 'mix' }"
+        :to="{ name : 'local' }"
       >
-        <a-button >Mix(Sider and Tile and Content)</a-button>
+        <a-button >Local State</a-button>
       </router-link>
     </div>
     <router-view />
@@ -27,23 +27,17 @@
 </template>
 
 <script>
-import { Content, Sider } from '@/layouts'
-
 export default {
-  name: 'Container',
-  components: {
-    'content-layout': Content,
-    'sider-layout': Sider
-  },
-  data () {
+  name: 'Example',
+  data() {
     return {
-    }
+    };
   },
   computed: {
   },
   methods: {
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

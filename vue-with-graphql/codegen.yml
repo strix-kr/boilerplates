@@ -1,0 +1,15 @@
+# codegen.yml
+schema: 
+  - https://gw.dev.strix.co.kr/graphql
+  - ./src/graphql/localStateSchema.graphql
+overwrite: true
+generates:
+  ./src/graphql/fragmentTypes.json:
+    plugins:
+      - fragment-matcher
+  ./src/graphql/introspection.json:
+    plugins:
+      - introspection
+    config:
+      minify: true
+  

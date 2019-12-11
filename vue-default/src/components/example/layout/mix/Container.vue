@@ -66,11 +66,11 @@
 </template>
 
 <script>
-import { Content, Sider, Tile } from '@/layouts'
+import { Content, Sider, Tile } from '@/layouts';
 
 // setting
-const vertical = 4
-const horizontal = 1
+const vertical = 4;
+const horizontal = 1;
 
 export default {
   name: 'Container',
@@ -79,26 +79,26 @@ export default {
     'sider-layout': Sider,
     'tile-layout': Tile,
   },
-  data () {
+  data() {
     return {
-      vertical: vertical,
-      horizontal: horizontal,
+      vertical,
+      horizontal,
       bodyStyle: {
-          minHeight: `calc(100vh / ${vertical * 2})`
+        minHeight: `calc(100vh / ${vertical * 2})`,
       },
       list: [
-          { id: 1, value: 'tile1', name: 'tile1' },
-          { id: 2, value: 'tile2', name: 'tile2' },
-          { id: 3, value: 'tile3', name: 'tile3' },
-          { id: 4, value: 'tile4', name: 'tile4' }
-      ]
-    }
+        { id: 1, value: 'tile1', name: 'tile1' },
+        { id: 2, value: 'tile2', name: 'tile2' },
+        { id: 3, value: 'tile3', name: 'tile3' },
+        { id: 4, value: 'tile4', name: 'tile4' },
+      ],
+    };
   },
   computed: {
   },
   methods: {
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

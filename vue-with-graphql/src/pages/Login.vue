@@ -4,7 +4,7 @@
         <a-row type="flex" align="middle" class="login-container" justify="center">
           <a-col>
             <a-row class="login-container-inner">
-              <a-col><h3>LOGIN</h3></a-col>
+              <a-col><h3>YOU NEED LOGIN</h3></a-col>
               <a-col>
                 <a-form
                   :form="form"
@@ -63,6 +63,8 @@
 </template>
 
 <script>
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
@@ -86,8 +88,16 @@ export default {
       return isFieldTouched('password') && getFieldError('password');
     },
     onLogin() {
-      this.$router.replace({
-        name: 'root',
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          const { email, password } = values;
+          return firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+            .then(() => firebase.auth().signInWithEmailAndPassword(email, password))
+            .catch((error) => {
+              console.log('error', error);
+            });
+        }
+        return true;
       });
     },
   },

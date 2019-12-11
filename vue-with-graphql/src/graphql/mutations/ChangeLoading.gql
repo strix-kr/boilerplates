@@ -1,0 +1,3 @@
+mutation ChangeLoading($loading: Boolean!){
+  onChangeLoading(loading: $loading) @client
+}

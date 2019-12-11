@@ -12,22 +12,22 @@
 </template>
 
 <script>
-import { Content } from '@/layouts'
+import { Content } from '@/layouts';
 
 export default {
   name: 'Container',
   components: {
-    'content-layout': Content
+    'content-layout': Content,
   },
-  data () {
+  data() {
     return {
-    }
+    };
   },
   computed: {
   },
   methods: {
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

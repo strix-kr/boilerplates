@@ -1,0 +1,55 @@
+#import "../fragments/ViewerSpec.gql"
+#import "../fragments/BrokerSpec.gql"
+#import "../fragments/AgencySpec.gql"
+#import "../fragments/GeneratorSpec.gql"
+
+#import "../fragments/SiteSpec.gql"
+
+query Site($id: ID!) {
+    trade {
+        viewer{
+            ...ViewerSpec
+            role {
+                ...on TradeBroker {
+                    ...BrokerSpec
+                    site(id: $id){
+                        ...SiteSpec
+                        address
+                        agencyId
+                        brokerId
+                        generatorId
+                        facilityTypeId
+                        dateStart
+                        dateEnd
+                    }
+                }
+                ...on TradeAgency {
+                    ...AgencySpec
+                    site(id: $id){
+                        ...SiteSpec
+                        address
+                        agencyId
+                        brokerId
+                        generatorId
+                        facilityTypeId
+                        dateStart
+                        dateEnd
+                    }
+                }
+                ...on TradeGenerator {
+                    ...GeneratorSpec
+                    site(id: $id){
+                        ...SiteSpec
+                        address
+                        agencyId
+                        brokerId
+                        generatorId
+                        facilityTypeId
+                        dateStart
+                        dateEnd
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import { NotFound, Layout, Login } from '@/pages';
 
-import { Container as HomeContainer } from '@/components/home'
+import { Container as HomeContainer } from '@/components/home';
 
 // https://router.vuejs.org/kr/guide/advanced/meta.html
 // 라우터를 정의하고 component 속성을 지정합니다.
@@ -19,7 +19,7 @@ const routes = [
   },
   {
     path: '/home',
-    name: 'home',
+    name: 'home(logged In)',
     component: Layout,
     redirect: '/home/contents',
     meta: {
@@ -38,7 +38,7 @@ const routes = [
   },
   {
     path: '/example',
-    name: 'example (use Layout)',
+    name: 'example',
     redirect: '/example/layout',
     component: Layout,
     meta: {
@@ -50,7 +50,7 @@ const routes = [
       {
         path: 'layout',
         name: 'layout',
-        redirect: { name: 'full' },
+        redirect: { name: 'query' },
         // 컴포넌트 그룹화 https://router.vuejs.org/kr/guide/advanced/lazy-loading.html#%EC%A7%80%EC%97%B0%EB%90%9C-%EB%A1%9C%EB%94%A9
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
@@ -58,44 +58,39 @@ const routes = [
         component: () => import(/* webpackChunkName: "layout" */ '@/components/example/layout/Container.vue'),
         children: [
           {
-            path: 'full',
-            name: 'full',
-            component: () => import(/* webpackChunkName: "layout" */ '@/components/example/layout/full/Container.vue'),
+            path: 'query',
+            name: 'query',
+            component: () => import(/* webpackChunkName: "layout" */ '@/components/example/layout/query/Container.vue'),
           },
           {
-            path: 'content',
-            name: 'content',
-            component: () => import(/* webpackChunkName: "layout" */ '@/components/example/layout/content/Container.vue'),
+            path: 'mutation/:id?/:mode?',
+            name: 'mutation',
+            component: () => import(/* webpackChunkName: "layout" */ '@/components/example/layout/mutation/Container.vue'),
           },
           {
-            path: 'tile',
-            name: 'tile',
-            component: () => import(/* webpackChunkName: "layout" */ '@/components/example/layout/tile/Container.vue'),
+            path: 'upload',
+            name: 'upload',
+            component: () => import(/* webpackChunkName: "layout" */ '@/components/example/layout/upload/Container.vue'),
           },
           {
-            path: 'mix',
-            name: 'mix',
-            component: () => import(/* webpackChunkName: "layout" */ '@/components/example/layout/mix/Container.vue'),
-          }
-        ]
+            path: 'local',
+            name: 'local',
+            component: () => import(/* webpackChunkName: "layout" */ '@/components/example/layout/local/Container.vue'),
+          },
+        ],
       },
     ],
   },
   {
     path: '/login',
-    name: `login (Don't use Layout)`,
+    name: 'login',
     component: Login,
     meta: {
       navigation: {
-        show: true,
+        show: false,
       },
     },
   },
-  // {
-  //   path: '/about',
-  //   name: 'about',
-
-  // },
   {
     path: '*',
     component: NotFound,

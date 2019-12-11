@@ -2,10 +2,10 @@
   <transition name="fade">
     <div
       class="spinner-container"
-      v-if="loading"
+      v-if="getLoading"
     >
       <a-spin
-        :spinning="loading"
+        :spinning="getLoading"
         :tip="tip || null"
       >
         <a-icon
@@ -20,8 +20,44 @@
 </template>
 
 <script>
+import Loading from '@/graphql/queries/Loading.gql';
+import ChangeLoading from '@/graphql/mutations/ChangeLoading.gql';
+
 export default {
+  name: 'Spinner',
   props: ['loading', 'tip'],
+  data() {
+    return {
+      localLoding: false,
+    };
+  },
+  computed: {
+    getLoading() {
+      return this.loading || this.localLoding;
+    },
+  },
+  apollo: {
+    localLoding: {
+      query: Loading,
+      update({ loading }) {
+        return loading;
+      },
+    },
+  },
+  watch: {
+    $route(value, oldValue) {
+      if (value !== oldValue) {
+        if (!this.loading) {
+          this.$apollo.mutate({ mutation: ChangeLoading, variables: { loading: true } });
+        }
+        this.$nextTick(() => {
+          setTimeout(() => {
+            this.$apollo.mutate({ mutation: ChangeLoading, variables: { loading: false } });
+          }, 300);
+        });
+      }
+    },
+  },
 };
 </script>
 

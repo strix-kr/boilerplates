@@ -1,0 +1,7 @@
+mutation($file: Upload!) {
+  uploadFile(file: $file) {
+    id
+    name
+    url(expiryHours: 2, download: true)
+  }
+}
