@@ -1,10 +1,17 @@
-/* eslint-disable */
-const { override, fixBabelImports, addWebpackPlugin, addLessLoader, addWebpackAlias, addDecoratorsLegacy } = require('customize-cra');
+const {
+  override,
+  fixBabelImports,
+  addWebpackPlugin,
+  addLessLoader,
+  addWebpackAlias,
+} = require('customize-cra');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
-const path = require('path');
-const sassToJS = require('sass-vars-to-js')
+const { resolve } = require('path');
+const sassToJS = require('sass-vars-to-js');
 
-const themeVariables = sassToJS(path.resolve(__dirname, 'src/styles/variables.scss'))
+const themeVariables = sassToJS(
+  resolve(__dirname, 'src/styles/variables.scss'),
+);
 
 // refs = https://github.com/arackaf/customize-cra
 module.exports = override(
@@ -15,10 +22,10 @@ module.exports = override(
   }),
   addLessLoader({
     javascriptEnabled: true,
-    modifyVars: themeVariables
+    modifyVars: themeVariables,
   }),
   addWebpackPlugin(new AntdDayjsWebpackPlugin()),
   addWebpackAlias({
-    '@': path.resolve(__dirname, 'src'),
-  })
+    '@': resolve(__dirname, 'src'),
+  }),
 );

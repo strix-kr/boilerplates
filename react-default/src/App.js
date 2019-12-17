@@ -1,8 +1,10 @@
 import React from 'react';
+import { Button, DatePicker } from 'antd';
 import logo from '@/assets/logo.svg';
-import { Button } from 'antd';
 
 function App() {
+  const a = () => 2;
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +21,7 @@ function App() {
           Learn React
         </a>
         <Button type="primary">Button</Button>
+        <DatePicker />
       </header>
     </div>
   );
