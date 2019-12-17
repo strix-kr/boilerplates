@@ -43,21 +43,23 @@ project
 | - [src]
 |   | - [assets]            static 파일들을 저장하는 경로입니다. vue-config의 assetsDir
 |
-|   | - [components]        route별 component를 구현합니다.
+|   | - [components]        route별 component를 구현합니다. 
 |   |   | - [commons]       공통으로 사용되는 component를 정의합니다. 
-|   |   | - [...]           directory명은 route와 매칭하여 구성하고 component의 최상위는 Container로 명명합니다.
+|   |   | - [...]           directory명은 route와 매칭하여 구성하고 component의 최상위는 Container로 명명합니다. 
 |
 |   | - [configs]           project에서 공통으로 사용하는 함수와 변수를 정의합니다. 
+|   |   | - api             RestAPI를 작성합니다. 
+|   |   | - Fetcher         Ajax모듈을 래핑하여 정의합니다. 
 |   |   | - service         공통으로 사용하는 service로직을 구현합니다. 
 |   |   | - formats         moment timeformat 등 공통으로 사용되는 format을 정의합니다. 
 |
 |   | - [layouts]           Layout을 구성하는 component를 작성합니다. 
-|   |   | - Header          Header
-|   |   | - Footer          Footer
-|   |   | - Content         Content
-|   |   | - Sider           Sider
-|   |   | - Navigation      Navigation
-|   |   | - Tile            Tile형 layout wrapper
+|   |   | - Header          Header 
+|   |   | - Footer          Footer 
+|   |   | - Content         Content 
+|   |   | - Sider           Sider 
+|   |   | - Navigation      Navigation 
+|   |   | - Tile            Tile형 layout wrapper 
 |
 |   | - [pages]             route에서 정적 component 파일을 작성합니다. 
 |   |   | - Layout          Header와 Footer를 갖는 기본 layout 페이지의 route component 입니다. 
@@ -66,16 +68,17 @@ project
 |
 |   | - [router]
 |   |   | - index.js        global router를 생성하고 전역 가드를 등록할 수 있습니다. 
-|   |   | - routes.js       routes를 정리한 파일입니다. 페이지 추가시에 route를 정의하고 components에 component를 작성하세요.
+|   |   | - routes.js       routes를 정리한 파일입니다. 페이지 추가시에 route를 정의하고 components에 component를 작성하세요. 
 |
 |   | - [styles]
-|   |   | - app.scss        project의 global style을 정의하세요. component단위 style은 해당 .vue파일의 scope를 권장합니다.
+|   |   | - app.scss        project의 global style을 정의하세요. component단위 style은 해당 .vue파일의 scope를 권장합니다. 
 |   |   | - variables.scss  ant-design-vue의 variables를 Customize할 수 있습니다. 
 |
 |   | - App.vue             project의 최상위 시작점입니다. project의 config를 정의할수 있습니다. 
 |   | - main.js             babel의 index file입니다. static html에 project를 mount하며 각종 provider를 매핑할 수 있습니다. 
 |   | - registerAntVue.js   ant-design-vue의 컴포넌트를 import하고 관리하는 파일입니다. 
-|   | - registerServiceWorker.js  PWA의 service-worker를 등록하고 사용합니다.
+|   | - registerServiceWorker.js  PWA의 service-worker를 등록하고 사용합니다. 
+|   | - store               vuex를 정의합니다.
 |   
 | - .browserslistrc         지원할 브라우저 목록을 정의합니다. 
 | - .eslintrc.js            ellint의 config파일입니다. 기본 룰은 AirBnb 규칙을 따릅니다. 
@@ -90,6 +93,10 @@ project
 
 [![Yarn@1.9.4](https://img.shields.io/badge/Yarn-Required-red)](https://yarnpkg.com/lang/en/)
 * 서비스를 배포할 계획이라면 반드시 위 사항을 준수하세요. 
+
+## 추가 설정 
+  * chart를 추가하려면 [echart](https://echarts.apache.org/en/index.html) 와 [vue-echarts](https://github.com/ecomfe/vue-echarts)를 권장합니다.
+  * polyfill이 필요한 경우 [browserlist](https://github.com/browserslist/browserslist) 와 [vue-cli#browserlist] (https://cli.vuejs.org/guide/browser-compatibility.html#browserslist), [apollo-client#polyfill](https://github.com/apollographql/apollo-client/issues/2780)을 참고하세요.
 
 ### setup 
 ```
