@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+#root{
+  color: blue;
+}
+
+
+@import './pages/Login.scss';
