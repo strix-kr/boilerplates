@@ -13,8 +13,8 @@ import * as serviceWorker from '@/serviceWorker';
 import 'moment/locale/ko';
 
 // default Route
-import { AuthRoute } from '@/components/commons';
-import { NotFound, Login } from '@/pages';
+import { AuthRoute } from '@/router';
+import { Login } from '@/pages';
 
 import App from './App';
 
@@ -28,11 +28,10 @@ const Root = () => {
     <ConfigProvider locale={koKR}>
       <Router>
         <Switch>
-          <AuthRoute exact path="/">
+          <Route path="/login" component={Login} />
+          <AuthRoute path="*">
             <App />
           </AuthRoute>
-          <Route path="/login" component={Login} />
-          <Route path="*" component={NotFound} />
         </Switch>
       </Router>
     </ConfigProvider>

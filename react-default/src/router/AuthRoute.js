@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 export const fakeAuth = {
-  isAuthenticated: false,
+  isAuthenticated: true,
   authenticate(cb) {
     fakeAuth.isAuthenticated = true;
     setTimeout(cb, 100); // fake async
@@ -13,7 +13,7 @@ export const fakeAuth = {
   },
 };
 
-export default function PrivateRoute({ children, ...rest }) {
+export default function AuthRoute({ children, ...rest }) {
   return (
     <Route
       {...rest}
@@ -21,7 +21,12 @@ export default function PrivateRoute({ children, ...rest }) {
         fakeAuth.isAuthenticated ? (
           children
         ) : (
-          <Redirect to={{ pathname: '/login', state: { from: location } }} />
+          <Redirect
+            to={{
+              pathname: '/login',
+              state: { from: location },
+            }}
+          />
         )
       }
     />

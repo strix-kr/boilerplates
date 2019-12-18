@@ -1,3 +1,3 @@
-import AuthRoute, { fakeAuth } from './AuthRoute';
+import { Spinner } from './utils';
 
-export { AuthRoute, fakeAuth };
+export { Spinner };

@@ -1,45 +1,23 @@
-.App {
+// Service의 default style => 각 component or page에서 override 할수 있다.
+
+.header{
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  h3{
+    color: $white-color;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.footer{
+  text-align: center;
+  p{
+    font-weight:bold;
   }
 }
 
-#root{
-  color: blue;
-}
+// import common component 
+@import './components/commons/Spinner.scss';
+@import './layout.scss';
 
-
+// import component or page 
 @import './pages/Login.scss';
+@import './components/Home.scss';
