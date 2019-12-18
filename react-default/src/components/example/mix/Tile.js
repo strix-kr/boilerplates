@@ -3,17 +3,18 @@ import { List, Card, Button } from 'antd';
 
 import { WithSiderLayout } from '@/layouts';
 
-// Card형일 경우 bodyStyle (height를 지정)
-function Sider() {
-  const data = new Array(4).fill('').map((item, idx) => {
+function Tile() {
+  const data = new Array(8).fill('').map((item, idx) => {
     return {
       title: `Title ${idx + 1}`,
     };
   });
 
+  console.log('data', data);
+
   return (
     <List
-      grid={{ gutter: 16, column: 1 }}
+      grid={{ gutter: 16, column: 2 }}
       dataSource={data}
       renderItem={item => (
         <List.Item>
@@ -21,7 +22,7 @@ function Sider() {
             title={item.title}
             extra={<Button>More</Button>}
             bodyStyle={{
-              minHeight: `calc(70vh / ${parseInt(data.length / 1, 10)} - 80px)`,
+              minHeight: `calc(70vh / ${parseInt(data.length / 2, 10)} - 80px)`,
             }}
           >
             Card content
@@ -32,4 +33,4 @@ function Sider() {
   );
 }
 
-export default WithSiderLayout(Sider);
+export default WithSiderLayout(Tile);

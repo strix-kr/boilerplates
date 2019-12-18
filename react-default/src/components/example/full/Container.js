@@ -7,7 +7,7 @@ import Content from './Content';
 function Container() {
   return (
     <Layout>
-      <Sider />
+      <Sider width="400" theme="dark" />
       <Content />
     </Layout>
   );
