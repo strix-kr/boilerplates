@@ -1,0 +1,25 @@
+.local-state-area{
+  text-align: center;
+  font-size: 50px;
+}
+
+.Loading{
+  color: rgb(46, 156, 156);
+  transition-duration: 0.3s;
+}
+
+.Loaded{
+  color:rgb(0, 0, 0);
+  transition-duration: 0.3s;
+}
+
+.view-state{
+  margin: 30px;
+  font-size: 20px;
+}
+
+.active-button{
+  background-color: rgb(112, 109, 109);
+  color: #fff;
+  transition-duration: 0.3s;
+}

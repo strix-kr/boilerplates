@@ -1,0 +1,10 @@
+.iconWrap{
+  text-align: right;
+
+  & .icon{
+    cursor: pointer;
+    margin: 20px 0 0 25px;
+    font-size: 30px;
+    color: #fff;
+  }
+}

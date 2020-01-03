@@ -1,0 +1,37 @@
+.list-content-layout{
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  overflow: auto;
+  padding: 8px 24px;
+  height: 75vh;
+}
+
+.modal-card .ant-card.ant-card-bordered{
+  margin: 7px 0px;
+}
+
+.ant-card-bordered:not(.modal-card){
+    cursor: pointer;
+
+    &:hover{
+      box-shadow: 1px 1px 3px black;
+    }
+
+    &:active{
+      box-shadow: 0px 0px 0px;
+    }
+}
+
+.modal-title{
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+.modal-card{
+  padding: 5px;
+
+  &-child{
+    overflow: auto;
+    height: 45vh;
+  }
+}
