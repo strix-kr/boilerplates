@@ -1,0 +1,12 @@
+schema:
+ - https://gw.dev.strix.co.kr/graphql
+overwrite: true
+generates:
+  ./src/graphql/fragmentTypes.json:
+    plugins:
+      - fragment-matcher
+  # ./src/graphql/introspection.json:
+  #   plugins:
+  #     - instrospection
+  #   config:
+  #     minify: true
