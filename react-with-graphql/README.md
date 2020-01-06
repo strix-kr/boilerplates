@@ -36,16 +36,16 @@ directory 구조는 아래와 같습니다.
 
 ```$xslt
 project
-| - [dist?]                 빌드된 파일이 저장됩니다. webpack-config의 outputDir
+| - [build?]                 빌드된 파일이 저장됩니다. webpack-config의 outputDir
 |
 | - [public]
-|   | - [img]               img파일을 저장합니다. 빌드시 assets의 이미지파일과 함께 dist/img 경로에 저장됩니다. 
 |   |                       실제 코드에 포함되지 않는 정적파일을 저장하세요. 
 |   | - index.html          webpack-config의 indexPath로 사용됩니다.
 |   | - favicon.ico         project의 favicon 파일입니다. 
 |
 | - [src]
 |   | - [assets]            static 파일들을 저장하는 경로입니다. webpack-config의 assetsDir
+|   |                       빌드시 build/static/media 경로에 저장됩니다. 
 |
 |   | - [components]        route별 component를 구현합니다. 
 |   |   | - [commons]       공통으로 사용되는 component를 정의합니다. 
@@ -72,7 +72,6 @@ project
 |   |   | - Navigation      Navigation 
 |
 |   | - [pages]             route에서 정적 component 파일을 작성합니다. 
-|   |   | - Layout          Header와 Footer를 갖는 기본 layout 페이지의 route component 입니다. 
 |   |   | - Login           login 페이지 입니다. 
 |   |   | - NotFound        route와 매칭되는 페이지가 없을 때 렌더링될 페이지입니다. 
 |
@@ -83,12 +82,12 @@ project
 |
 |   | - [styles]
 |   |   | - [app]           component단위 style을 정의합니다. 각 컴포넌트의 scope를 권장합니다.
-|   |   | - nomalize.scss   
+|   |   | - normalize.scss  normalize style을 정의하세요.
 |   |   | - root.scss       project의 global style을 정의하세요.
 |   |   | - variables.scss  ant-design의 variables를 Customize할 수 있습니다. 
 |   | 
 |   | - App.js              project의 최상위 시작점입니다. project의 config를 정의할수 있습니다. 
-|   | - index.js            babel의 index file입니다. static html에 project를 mount하며 각종 provider를 매핑할 수 있습니다. 
+|   | - index.js            webpack의 index file입니다. static html에 project를 mount하며 각종 provider를 매핑할 수 있습니다. 
 |   
 | - .browserslistrc         지원할 브라우저 목록을 정의합니다. 
 | - .eslintrc.js            ellint의 config파일입니다. 기본 룰은 AirBnb 규칙을 따릅니다. 

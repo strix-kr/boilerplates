@@ -1,68 +1,113 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React-Default
 
-## Available Scripts
+install 
 
-In the project directory, you can run:
+```
+strix-cli my-app react-default
+```
 
-### `yarn start`
+---
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Envioronment
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Customize configuration
+See [Configuration Reference](https://create-react-app.dev/docs/documentation-intro).
 
-### `yarn test`
+---
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Dependencies
+UI Framework : [Ant Design @3.26.2](https://ant.design/docs/react/introduce)
+react-router-dom : [react-router-dom@^5.1.2](https://reacttraining.com/react-router/)
+moment: [moment@^2.24.0](https://momentjs.com/docs/)
 
-### `yarn build`
+## Structure
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+directory 구조는 아래와 같습니다.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+`[]` 는 folder 를 의미하고 그렇지 않은 경우 `file` 을 나타냅니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```$xslt
+project
+| - [build?]                빌드된 파일이 저장됩니다. webpack-config의 outputDir
+|
+| - [public]
+|   |                       실제 코드에 포함되지 않는 정적파일을 저장하세요. 
+|   | - index.html          webpack-config의 indexPath로 사용됩니다.
+|   | - favicon.ico         project의 favicon 파일입니다. 
+|
+| - [src]
+|   | - [assets]            static 파일들을 저장하는 경로입니다. webpack-config의 assetsDir 
+|   |                       빌드시 build/static/media 경로에 저장됩니다. 
+|
+|   | - [components]        route별 component를 구현합니다.
+|   |   | - [commons]       공통으로 사용되는 component를 정의합니다. 
+|   |   | - [...]           directory명은 route와 매칭하여 구성하고 component의 최상위는 Container로 명명합니다.
+|
+|   | - [configs]           project에서 공통으로 사용하는 함수와 변수를 정의합니다. 
+|   |   | - service         공통으로 사용하는 service로직을 구현합니다. 
+|   |   | - formats         moment timeformat 등 공통으로 사용되는 format을 정의합니다. 
+|
+|   | - [layouts]           Layout을 구성하는 component를 작성합니다. 
+|   |   | - Header          Header
+|   |   | - Footer          Footer
+|   |   | - Content         Content
+|   |   | - FullLayout      Header와 Footer를 갖고 있는 Layout. HOC
+|   |   | - Sider           Sider
+|   |   | - Navigation      Navigation
+|
+|   | - [pages]             route에서 정적 component 파일을 작성합니다. 
+|   |   | - Login           login 페이지 입니다. 
+|   |   | - NotFound        route와 매칭되는 페이지가 없을 때 렌더링될 페이지입니다. 
+|
+|   | - [router]
+|   |   | - AuthRoute.js    사용자의 권한에 따라 Route합니다.
+|   |   | - SubRoutes.js    routes에 정리된 객체를 기준으로 Route를 생성합니다.
+|   |   | - routes.js       routes를 정리한 파일입니다. 페이지 추가시에 route를 정의하고 components에 component를 작성하세요.
+|
+|   | - [styles]
+|   |   | - [app]           component단위 style을 정의합니다. 각 컴포넌트의 scope를 권장합니다.
+|   |   | - normalize.scss  normalize style을 정의하세요. 
+|   |   | - root.scss       project의 global style을 정의하세요.
+|   |   | - variables.scss  ant-design의 variables를 Customize할 수 있습니다. 
+|
+|   | - App.vue             project의 최상위 시작점입니다. project의 config를 정의할수 있습니다. 
+|   | - index.js            webpack의 index file입니다. static html에 project를 mount하며 각종 provider를 매핑할 수 있습니다. 
+|   
+| - .browserslistrc         지원할 브라우저 목록을 정의합니다. 
+| - .eslintrc.js            ellint의 config파일입니다. 기본 룰은 AirBnb 규칙을 따릅니다. 
+| - .prettierrc.js          vscode prettier 설정파일입니다. 
+| - package.json            dependencies와 scripts 등 설정파일을 작성합니다. 
+| - config-overrides.js     webpack.config를 overriding 합니다.
+| - etc...
+|___
+```
 
-### `yarn eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[![Yarn@1.9.4](https://img.shields.io/badge/Yarn-Required-red)](https://yarnpkg.com/lang/en/)
+* 서비스를 배포할 계획이라면 반드시 위 사항을 준수하세요. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 추가 설정 
+  * chart를 추가하려면 [echart](https://echarts.apache.org/en/index.html)를 권장합니다.
+  * polyfill이 필요한 경우 [browserlist](https://github.com/browserslist/browserslist) 와 [reactjs#polyfill](https://reactjs.org/docs/javascript-environment-requirements.html#___gatsby)을 참고하세요.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### setup 
+```
+yarn install
+```
 
-## Learn More
+### Compiles and hot-reloads for development
+```
+yarn start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Compiles and minifies for production
+```
+yarn build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Lints and fixes files
+```
+yarn lint
+```
