@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { shallowEqual, useSelector, useDispatch } from 'react-redux';
 import { Card, List, Modal, Layout } from 'antd';
 import { WithContentLayout } from '@/layouts';
-import { post } from '@/actions';
+import { post } from '@/store/actions';
 import { Spinner } from '@/components/commons';
 
 import '@/styles/app/components/example/list/Content.scss';
@@ -18,10 +18,13 @@ const Content = () => {
   const { isLoading } = useSelector(state => state.status, shallowEqual);
 
   useEffect(() => {
-    if( !items ){
-      dispatch(post.fetchDataAsync(category));
+    const action = async () => {
+      if (!items) {
+        dispatch(post.fetchDataAsync(category));
+      }
     }
-  }, []);
+    action()
+  }, [items, category, dispatch]);
   
   const [ modalState, setModalState ] = useState({
     id: '',

@@ -1,4 +1,4 @@
-import { status } from '@/actions';
+import { status } from '@/store/actions';
 
 const statusReducer = (state = {}, { type, payload }) => {
   switch (type) {

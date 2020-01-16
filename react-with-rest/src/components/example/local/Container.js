@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import { Layout, Button, Spin } from 'antd';
-import { status } from '@/actions';
+import { status } from '@/store/actions';
 
 import '@/styles/app/components/example/local/Container.scss';
 
@@ -15,7 +15,7 @@ const Container = () => {
   const [ localState, refreshState ] = useState(store.getState().status);
 
   useEffect(() => {
-    refreshState(store.getState().status);
+    refreshState(isActive);
   }, [isActive]);
 
   const changeState = () => {

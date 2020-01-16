@@ -1,4 +1,4 @@
-import { user } from '@/actions';
+import { user } from '@/store/actions';
 
 const userReducer = (state = {}, { type, payload }) => {
   switch (type) {

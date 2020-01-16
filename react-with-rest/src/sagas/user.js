@@ -1,5 +1,5 @@
 import { takeEvery, put } from 'redux-saga/effects';
-import { user } from '@/actions';
+import { userTypes } from '@/store/types';
 import { Fetcher } from '@/configs';
 
 function* putUserData(method, paylaod) {
@@ -12,15 +12,15 @@ function* createUser({ payload }) {
   const data = yield putUserData('post', payload);
   // fixed user id
   data.id = 1;
-  yield put({ type: user.CREATE, payload: data });
+  yield put({ type: userTypes.CREATE, payload: data });
 }
 
 function* updateUser({ payload }) {
   const data = yield putUserData('put', payload);
-  yield put({ type: user.UPDATE, payload: data });
+  yield put({ type: userTypes.UPDATE, payload: data });
 }
 
 export default function* watcher() {
-  yield takeEvery(user.CREATE_ASYNC, createUser);
-  yield takeEvery(user.UPDATE_ASYNC, updateUser);
+  yield takeEvery(userTypes.CREATE_ASYNC, createUser);
+  yield takeEvery(userTypes.UPDATE_ASYNC, updateUser);
 }

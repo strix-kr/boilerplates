@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useStore, useDispatch } from 'react-redux';
 import { Form, Icon, Input, Button, Row, Col, Layout, Modal } from 'antd';
 import { useHistory } from 'react-router-dom';
-import { status } from '@/actions';
+import { status } from '@/store/actions';
 
 import SignUp from '@/components/example/user/Content';
 

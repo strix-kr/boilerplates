@@ -3,10 +3,10 @@ import userReducer from './user';
 import statusReducer from './status';
 import postReducer from './post';
 
-const rootReducers = combineReducers({
+const reducers = combineReducers({
   users: userReducer,
   status: statusReducer,
   fetchData: postReducer,
 });
 
-export default rootReducers;
+export default reducers;

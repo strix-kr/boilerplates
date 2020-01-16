@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Button, Input, Modal } from 'antd';
-import { post } from '@/actions';
+import { post } from '@/store/actions';
 
 import '@/styles/app/components/example/list/Header.scss';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Layout, Row, Col, Icon } from 'antd';
-import { post, status } from '@/actions';
+import { post, status } from '@/store/actions';
 
 const { Header } = Layout;
 

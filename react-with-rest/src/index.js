@@ -19,14 +19,19 @@ import 'moment/locale/ko';
 import { AuthRoute } from '@/router';
 import { Login } from '@/pages';
 
-import App from './App';
-import { store } from '@/store';
+// store
+import createAppStore from '@/store';
+import rootSagas from '@/sagas';
 
+import App from './App';
 
 moment.locale('ko');
 
 // Provider 정의
 // ConfigProvider = https://ant.design/components/config-provider/
+
+const store = createAppStore()
+store.runSaga(rootSagas)
 
 const Root = () => {
   return (

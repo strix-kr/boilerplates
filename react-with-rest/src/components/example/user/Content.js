@@ -15,7 +15,7 @@ import {
 } from 'antd';
 import moment from 'moment';
 import { api } from '@/configs';
-import { user } from '@/actions';
+import { user } from '@/store/actions';
 
 const Content = ({ form, isCreate = false, onCancel }) => {
 
@@ -39,7 +39,7 @@ const Content = ({ form, isCreate = false, onCancel }) => {
         birth: moment(birth), 
       });
     }
-  }, []);
+  }, [form, isCreate, currentUser]);
 
   const isExistUser = ({ email }) => Object.values(users).some(obj => obj.email === email);
 

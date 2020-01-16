@@ -1,6 +1,7 @@
 import { takeEvery, put } from 'redux-saga/effects';
-import { post, status } from '@/actions';
+import { status } from '@/store/actions';
 import { api, Fetcher } from '@/configs';
+import { postsTypes } from '@/store/types'
 
 function* getFetchData({ payload }) {
   const { url } = api[payload]();
@@ -25,12 +26,12 @@ function* getFetchData({ payload }) {
   });
 
   // set post data to store state
-  yield put({ type: post.SET_ITEMS, payload: res.data });
+  yield put({ type: postsTypes.SET_ITEMS, payload: res.data });
   // set comment data to store state
-  yield put({ type: post.SET_COMMENTS, payload: comments });
+  yield put({ type: postsTypes.SET_COMMENTS, payload: comments });
   yield put({ type: status.LOADING_END });
 }
 
 export default function* watcher() {
-  yield takeEvery(post.FETCH_DATA_ASYNC, getFetchData);
+  yield takeEvery(postsTypes.FETCH_DATA_ASYNC, getFetchData);
 }

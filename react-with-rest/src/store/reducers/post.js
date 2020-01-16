@@ -1,4 +1,4 @@
-import { post } from '@/actions';
+import { post } from '@/store/actions';
 
 const getPostsMaxId = state => {
   const item = state.posts.sort((a, b) => b.id - a.id)[0];

@@ -1,31 +1,28 @@
-export const CREATE = 'createUser';
-export const UPDATE = 'updateUser';
-export const CREATE_ASYNC = 'createUserAsync';
-export const UPDATE_ASYNC = 'updateUserAsync';
+import { userTypes } from '@/store/types';
 
 export const create = () => {
   return {
-    type: CREATE,
+    type: userTypes.CREATE,
   };
 };
 
 export const update = payload => {
   return {
-    type: UPDATE,
+    type: userTypes.UPDATE,
     payload,
   };
 };
 
 export const createAsync = payload => {
   return {
-    type: CREATE_ASYNC,
+    type: userTypes.CREATE_ASYNC,
     payload,
   };
 };
 
 export const updateAsync = payload => {
   return {
-    type: UPDATE_ASYNC,
+    type: userTypes.UPDATE_ASYNC,
     payload,
   };
 };
