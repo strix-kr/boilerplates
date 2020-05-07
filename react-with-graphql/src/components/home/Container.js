@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Layout, Icon } from 'antd';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_LOCAL_STATE } from '@/graphql/queries/localState';
 import { WithFullLayout } from '@/layouts';
@@ -19,6 +19,7 @@ function Container() {
   return (
     <Layout className="home">
       <Content>
+        <Icon component={logo} />
         <img src={logo} className="App-logo" alt="logo" />
         <div className="hello">
           <h3>email: {email}</h3>

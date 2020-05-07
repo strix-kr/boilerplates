@@ -3,9 +3,9 @@ const {
   addWebpackPlugin,
   disableChunk,
   addLessLoader,
-  addBabelPlugins,
   removeModuleScopePlugin,
   addWebpackAlias,
+  fixBabelImports,
 } = require('customize-cra');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 const { resolve } = require('path');
@@ -17,13 +17,11 @@ const themeVariables = sassToJS(
 
 // refs = https://github.com/arackaf/customize-cra
 module.exports = override(
-  ...addBabelPlugins(
-    [
-      "import",
-      { libraryName: "antd", libraryDirectory: "lib", style: true },
-      "antd"
-    ]
-  ),
+  fixBabelImports('import', {
+    libraryName: 'antd',
+    libraryDirectory: 'es',
+    style: true,
+  }),
   addLessLoader({
     javascriptEnabled: true,
     modifyVars: themeVariables,
