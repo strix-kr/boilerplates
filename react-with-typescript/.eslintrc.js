@@ -1,5 +1,4 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
   env: {
     browser: true,
     es6: true,
@@ -7,14 +6,17 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
+
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
+
     "airbnb-base"
   ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -32,5 +34,9 @@ module.exports = {
     }
   },
   rules: {
+    'operator-linebreak': 0,
+    'no-use-before-define': 0,
+    'no-param-reassign': 0,
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
   },
 };
