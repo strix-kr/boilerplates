@@ -95,8 +95,14 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix"
+    "!(*test).{ts.tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{json,md,html,scss}": [
+      "prettier --write",
+      "git add"
     ]
   },
   "graphqlConfig": {

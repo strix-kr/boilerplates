@@ -23,7 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 #service worker
-src/serviceWorker.ts
+/src/serviceWorker.ts
 
 #test
 /src/**/\*.test.tsx
+/src/setupTests.ts
