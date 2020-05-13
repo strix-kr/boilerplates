@@ -1,0 +1,10 @@
+query TestHOC {
+  trade {
+    viewer {
+      id
+      type
+      platform
+      createdAt
+    }
+  }
+}

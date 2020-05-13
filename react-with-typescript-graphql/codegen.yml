@@ -1,0 +1,27 @@
+overwrite: true
+schema: "https://gw.dev.strix.co.kr/graphql"
+generates:
+  src/types/schema.d.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-graphql-files-modules"
+      - "typescript-document-nodes"
+      - "fragment-matcher"
+  src/graphql/schema.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+      reactApolloVersion: 3
+      withComponent: true
+      gqlImport: graphql.macro#gql
+      withHOC: true
+      withHooks: true
+      withResultType: true
+      withMutationOptionsType: true
+      addDocBlocks: true
+  src/graphql/introspection.json:
+    plugins:
+      - "introspection"

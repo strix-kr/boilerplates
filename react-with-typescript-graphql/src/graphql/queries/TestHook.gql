@@ -1,0 +1,9 @@
+query TestHook {
+  trade {
+    viewer {
+      id
+      email
+      name
+    }
+  }
+}

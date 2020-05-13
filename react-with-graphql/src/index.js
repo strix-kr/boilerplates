@@ -34,7 +34,6 @@ const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!./st
 // ConfigProvider = https://ant.design/components/config-provider/
 
 const Root = () => {
-
   return (
     <ConfigProvider locale={koKR}>
       <ThemeProvider theme={theme}>

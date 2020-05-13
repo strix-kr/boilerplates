@@ -1,11 +1,12 @@
 const {
   override,
-  addWebpackPlugin,
   disableChunk,
   addLessLoader,
   removeModuleScopePlugin,
   addWebpackAlias,
+  addWebpackPlugin,
   fixBabelImports,
+  addWebpackModuleRule,
 } = require('customize-cra');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 const {resolve } = require('path');
@@ -23,6 +24,12 @@ module.exports = override(
     libraryDirectory: 'es',
     style: true,
   }),
+  addWebpackModuleRule(
+    {
+      test: /\.(graphql|gql)$/,
+      use: 'graphql-tag/loader'
+    }
+  ),
   addLessLoader({
     javascriptEnabled: true,
     importLoaders: true,

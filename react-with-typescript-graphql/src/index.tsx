@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ConfigProvider } from 'antd';
-
+import { ApolloProvider } from '@apollo/react-hooks';
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ import 'moment/locale/ko';
 // default Route
 import { AuthRoute } from '@/router';
 import { Login } from '@/pages';
-
+import { apolloClient } from '@/graphql/apollo';
 
 import App from '@/App.tsx';
 moment.locale('ko');
@@ -36,14 +36,16 @@ const Root = () => {
   return (
     <ConfigProvider locale={koKR}>
      <ThemeProvider theme={theme}>
-        <Router>
-          <Switch>
-            <Route path="/login" component={Login} />
-            <AuthRoute path="*">
-              <App />
-            </AuthRoute>
-          </Switch>
-        </Router>
+        <ApolloProvider client={apolloClient}>
+          <Router>
+            <Switch>
+              <Route path="/login" component={Login} />
+              <AuthRoute path="*">
+                <App />
+              </AuthRoute>
+            </Switch>
+          </Router>
+        </ApolloProvider>
       </ThemeProvider>
     </ConfigProvider> 
   )
