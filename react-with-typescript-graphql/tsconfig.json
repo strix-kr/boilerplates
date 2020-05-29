@@ -18,7 +18,11 @@
     "checkJs": false,
     "maxNodeModuleJsDepth": 0,
     "strict": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "sourceMap": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": false,
@@ -26,7 +30,14 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": ["src"],
-  "exclude": ["build", "node_modules", "**/*.spec.ts", "**/*.test.tsx"],
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "build",
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.test.tsx"
+  ],
   "extends": "./tsconfig.paths.json"
 }

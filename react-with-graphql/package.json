@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-app-rewired start & json-graphql-server ./src/db.js --p 3001",
-    "build": "react-app-rewired build && react-snapshot",
+    "build": "react-app-rewired build",
     "lint": "prettier --config .prettierrc.js --write src/**/*.{js,jsx,ts,tsx,json,css,scss,md}",
     "eject": "react-scripts eject",
     "generate": "graphql-codegen --config codegen.yml"

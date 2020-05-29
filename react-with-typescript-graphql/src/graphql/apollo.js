@@ -6,7 +6,7 @@ import {
 import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
-
+import { onError } from 'apollo-link-error';
 import { RetryLink } from 'apollo-link-retry';
 import introspectionQueryResultData from '@/graphql/introspection.json';
 // import { localState, typeDefs, resolvers } from '@/graphql/localState';
@@ -51,6 +51,10 @@ const authLink = setContext((_, { headers }) => {
   }
 });
 
+const errorLink = onError(error => {
+  console.log('errorLink', error);
+});
+
 const retryLink = new RetryLink({
   delay: {
     initial: 300,
@@ -86,7 +90,7 @@ const cache = new InMemoryCache({
 const apolloClient = new ApolloClient({
   ssrMode: false,
   connectToDevTools: isConnectDevtool,
-  link: ApolloLink.from([authLink, retryLink, httpLink]),
+  link: ApolloLink.from([authLink, errorLink, retryLink, httpLink]),
   resolvers: {},
   typeDefs: {},
   // A custom instance of ApolloCache to be used.
